@@ -1,0 +1,211 @@
+.topping {
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 100ms linear forwards;
+}
+
+.mushrooms {
+    width: 8%;
+    height: 5%;
+    border: none;
+    border-radius: 50% 50% 10% 10%;
+    background-image: linear-gradient(#a7a7a7, #c7b2a5, #554d48);
+    z-index: 2;
+}
+
+.mushrooms::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -52%;
+    width: 40%;
+    height: 55%;
+    border-radius: 0 0 20% 20%;
+    background-image: linear-gradient(#554d48, #a7a7a7);
+    transform: translateX(-50%);
+}
+
+.mushrooms_1 {
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+.mushrooms_2 {
+    top: 49%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(30deg);
+}
+
+.mushrooms_3 {
+    top: 60%;
+    left: 48%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.mushrooms_4 {
+    top: 51%;
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.mushrooms_5 {
+    top: 41%;
+    left: 69%;
+    transform: translate(-50%, -50%) rotate(-100deg);
+}
+
+.mushrooms_6 {
+    top: 61%;
+    left: 69%;
+    transform: translate(-50%, -50%) rotate(50deg);
+}
+
+.mushrooms_7 {
+    top: 70%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.mushrooms_8 {
+    top: 72%;
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(190deg);
+}
+
+.mushrooms_9 {
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.mushrooms_10 {
+    top: 40%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.mushrooms_11 {
+    top: 40%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.mushrooms_12 {
+    top: 40%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.mushrooms_13 {
+    top: 30%;
+    left: 41%;
+    transform: translate(-50%, -50%) rotate(70deg);
+}
+
+.mushrooms_14 {
+    top: 31%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(200deg);
+}
+
+.mushrooms_15 {
+    top: 22%;
+    left: 76%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+.mushrooms_16 {
+    top: 80%;
+    left: 74%;
+    transform: translate(-50%, -50%) rotate(140deg);
+}
+
+.mushrooms_17 {
+    top: 75%;
+    left: 22%;
+    transform: translate(-50%, -50%) rotate(100deg);
+}
+
+.mushrooms_18 {
+    top: 21%;
+    left: 28%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.mushrooms_19 {
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.mushrooms_20 {
+    top: 50%;
+    left: 78%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.mushrooms_21 {
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+}
+
+.mushrooms_22 {
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+
+/* Media Queries */
+
+@media (max-width: 720px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .topping-select {
+        grid-row: initial;
+    }
+    .order-toppings li {
+        flex-grow: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .topping-label {
+        font-size: 16px;
+        padding: 15px 45px 15px 65px;
+    }
+    .topping-input {
+        width: 25px;
+        height: 25px;
+        right: 15px;
+    }
+    .topping-image {
+        width: 55px;
+    }
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

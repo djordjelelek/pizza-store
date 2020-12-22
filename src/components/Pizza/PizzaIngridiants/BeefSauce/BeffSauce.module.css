@@ -1,0 +1,135 @@
+.topping {
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 100ms linear forwards;
+}
+
+.beefSauce {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background-image: radial-gradient(circle, #c09d86, #795843);
+}
+
+.beefSauce_1 {
+    top: 30%;
+    left: 50%;
+}
+
+.beefSauce_2 {
+    top: 30%;
+    left: 70%;
+}
+
+.beefSauce_3 {
+    top: 50%;
+    left: 70%;
+}
+
+.beefSauce_3 {
+    top: 70%;
+    left: 70%;
+}
+
+.beefSauce_4 {
+    top: 70%;
+    left: 50%;
+}
+
+.beefSauce_5 {
+    top: 70%;
+    left: 30%;
+}
+
+.beefSauce_6 {
+    top: 50%;
+    left: 30%;
+}
+
+.beefSauce_7 {
+    top: 30%;
+    left: 30%;
+}
+
+.beefSauce_8 {
+    top: 50%;
+    left: 50%;
+}
+
+.beefSauce_9 {
+    top: 50%;
+    left: 70%;
+}
+
+.beefSauce_10 {
+    top: 15%;
+    left: 50%;
+}
+
+.beefSauce_11 {
+    top: 50%;
+    left: 85%;
+}
+
+.beefSauce_12 {
+    top: 85%;
+    left: 50%;
+}
+
+.beefSauce_13 {
+    top: 50%;
+    left: 15%;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 720px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .topping-select {
+        grid-row: initial;
+    }
+    .order-toppings li {
+        flex-grow: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .topping-label {
+        font-size: 16px;
+        padding: 15px 45px 15px 65px;
+    }
+    .topping-input {
+        width: 25px;
+        height: 25px;
+        right: 15px;
+    }
+    .topping-image {
+        width: 55px;
+    }
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

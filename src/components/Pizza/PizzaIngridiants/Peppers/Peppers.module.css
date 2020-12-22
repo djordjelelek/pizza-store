@@ -1,0 +1,161 @@
+.topping {
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 100ms linear forwards;
+}
+
+.peppers {
+    width: 3%;
+    height: 15%;
+    border: none;
+    border-radius: 30% 10% 10% 30%;
+    background-image: linear-gradient(90deg, #1e801e, #90ee90);
+    z-index: 2;
+}
+
+.peppers:nth-child(2n) {
+    background-image: linear-gradient(90deg, #af1616, #fca4b2);
+}
+
+.peppers_1 {
+    top: 25%;
+    left: 32%;
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.peppers_2 {
+    top: 32%;
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(5deg);
+}
+
+.peppers_3 {
+    top: 25%;
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+}
+
+.peppers_4 {
+    top: 40%;
+    left: 75%;
+    transform: translate(-50%, -50%) rotate(15deg);
+}
+
+.peppers_5 {
+    top: 48%;
+    left: 58%;
+    transform: translate(-50%, -50%) rotate(50deg);
+}
+
+.peppers_6 {
+    top: 68%;
+    left: 62%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.peppers_7 {
+    top: 70%;
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+}
+
+.peppers_8 {
+    top: 70%;
+    left: 25%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.peppers_9 {
+    top: 40%;
+    left: 25%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+.peppers_10 {
+    top: 55%;
+    left: 35%;
+    transform: translate(-50%, -50%) rotate(80deg);
+}
+
+.peppers_11 {
+    top: 58%;
+    left: 80%;
+    transform: translate(-50%, -50%) rotate(10deg);
+}
+
+.peppers_12 {
+    top: 22%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(130deg);
+}
+
+.peppers_13 {
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-80deg);
+}
+
+.peppers_14 {
+    top: 52%;
+    left: 17%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+.peppers_15 {
+    top: 78%;
+    left: 72%;
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+
+/* Media Queries */
+
+@media (max-width: 720px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .topping-select {
+        grid-row: initial;
+    }
+    .order-toppings li {
+        flex-grow: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .topping-label {
+        font-size: 16px;
+        padding: 15px 45px 15px 65px;
+    }
+    .topping-input {
+        width: 25px;
+        height: 25px;
+        right: 15px;
+    }
+    .topping-image {
+        width: 55px;
+    }
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

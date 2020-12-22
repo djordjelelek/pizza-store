@@ -1,0 +1,67 @@
+.topping {
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 100ms linear forwards;
+}
+
+.ketchup {
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    background-image: radial-gradient(#dd1919, #b91313);
+    top: 50%;
+    left: 50%;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 720px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .topping-select {
+        grid-row: initial;
+    }
+    .order-toppings li {
+        flex-grow: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .topping-label {
+        font-size: 16px;
+        padding: 15px 45px 15px 65px;
+    }
+    .topping-input {
+        width: 25px;
+        height: 25px;
+        right: 15px;
+    }
+    .topping-image {
+        width: 55px;
+    }
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

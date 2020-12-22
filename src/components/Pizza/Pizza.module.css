@@ -1,0 +1,45 @@
+.pizza_container {
+    width: 100%;
+    margin: auto;
+    height: 250px;
+    /* overflow: scroll; */
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@media (min-width: 500px) and (min-height: 400px) {
+    .pizza_container {
+        width: 350px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 500px) and (min-height: 401px) {
+    .pizza_container {
+        width: 450px;
+        height: 400px;
+    }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+    .pizza_container {
+        width: 700px;
+        height: 600px;
+    }
+}
+
+.pizza {
+    position: relative;
+    margin: 0 auto;
+    width: 350px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: linear-gradient(transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), linear-gradient(90deg, transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), linear-gradient(45deg, transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), linear-gradient(-45deg, transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), radial-gradient(circle, #fcfc8f, #fdfd81 59.5%, #c79d81 60%, #836551 70%);
+}
+
+.pizza::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}

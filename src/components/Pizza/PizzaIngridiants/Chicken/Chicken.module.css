@@ -1,0 +1,150 @@
+.topping {
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 100ms linear forwards;
+}
+
+.chicken {
+    width: 5%;
+    height: 14%;
+    border-radius: 20% 40% 100% 50%;
+    background-image: radial-gradient(#dac0af 40%, #a1795e);
+    z-index: 3;
+}
+
+.chicken_1 {
+    top: 25%;
+    left: 58%;
+    transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.chicken_2 {
+    top: 32%;
+    left: 75%;
+    transform: translate(-50%, -50%) rotate(-110deg);
+}
+
+.chicken_3 {
+    top: 70%;
+    left: 80%;
+    transform: translate(-50%, -50%) rotate(40deg);
+}
+
+.chicken_4 {
+    top: 68%;
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(50deg);
+}
+
+.chicken_5 {
+    top: 80%;
+    left: 35%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+}
+
+.chicken_6 {
+    top: 35%;
+    left: 22%;
+    transform: translate(-50%, -50%) rotate(60deg);
+}
+
+.chicken_7 {
+    top: 52%;
+    left: 80%;
+    transform: translate(-50%, -50%) rotate(5deg);
+}
+
+.chicken_8 {
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%) rotate(40deg);
+}
+
+.chicken_9 {
+    top: 65%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(-110deg);
+}
+
+.chicken_10 {
+    top: 22%;
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+.chicken_11 {
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(-100deg);
+}
+
+.chicken_12 {
+    top: 82%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(80deg);
+}
+
+.chicken_13 {
+    top: 55%;
+    left: 46%;
+    transform: translate(-50%, -50%) rotate(60deg);
+}
+
+.chicken_14 {
+    top: 48%;
+    left: 65%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+
+/* Media Queries */
+
+@media (max-width: 720px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .topping-select {
+        grid-row: initial;
+    }
+    .order-toppings li {
+        flex-grow: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .topping-label {
+        font-size: 16px;
+        padding: 15px 45px 15px 65px;
+    }
+    .topping-input {
+        width: 25px;
+        height: 25px;
+        right: 15px;
+    }
+    .topping-image {
+        width: 55px;
+    }
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
