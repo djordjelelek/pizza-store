@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./Pizza.module.css";
 import PizzaIngridiants from "./PizzaIngridiants/PizzaIngridiants";
 
-const burger = (props) => {
+const pizza = (props) => {
   return (
     <div className={classes.pizza_container}>
       <div className={classes.pizza}>
@@ -15,4 +15,4 @@ const burger = (props) => {
   );
 };
 
-export default burger;
+export default pizza;

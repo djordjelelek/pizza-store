@@ -1,0 +1,47 @@
+.OrderList {
+    position: fixed;
+    z-index: 500;
+    background-color: #e7e6e4e1;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    color: black;
+    /* text-align: left; */
+}
+
+@media (min-width: 600px) {
+    .OrderList {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+}
+
+.Button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.Button:first-of-type {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.Success {
+    color: #68692b;
+}
+
+.Danger {
+    color: #e40606;
+}
