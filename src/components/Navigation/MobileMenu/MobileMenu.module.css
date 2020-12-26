@@ -1,0 +1,52 @@
+.MenuIcon {
+    width: 3.1em;
+    margin-right: -15px;
+}
+
+.MobileMenu {
+    position: fixed;
+    width: 220px;
+    max-width: 70%;
+    height: 200px;
+    right: 0;
+    top: 56px;
+    z-index: 200;
+    background-color: #e7e6e4e3;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+}
+
+.List {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 25px;
+}
+
+.List a {
+    color: #000000;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+.List a:hover {
+    background-color: #000000;
+    border-bottom: 4px solid #ffffff;
+    color: white;
+}
+
+@media (min-width: 500px) {
+    .MobileMenu {
+        display: none;
+    }
+    .MenuIcon {
+        display: none;
+    }
+    .List {
+        display: none;
+    }
+}
