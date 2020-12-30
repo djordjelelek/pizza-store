@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Auxilliary";
 import Pizza from "../../components/Pizza/Pizza";
 import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
-import OrderList from "../../components/UI/OrderList";
+import Modal from "../../components/UI/Modal";
+import axios from "../../axios-order-list";
 
 const price = {
   ketchup: 1,
@@ -34,6 +35,7 @@ class PizzaBuilder extends Component {
     },
     currentPrice: 130,
     showRecipe: false,
+    showSpinner: false,
   };
   changeButtonHanler = (arg) => {
     let ingredient = this.state.ingredients;
@@ -56,6 +58,33 @@ class PizzaBuilder extends Component {
       showRecipe: false,
     });
   };
+  spinnerHandler = () => {
+    this.setState({
+      showSpinner: true,
+    });
+  };
+  buyingHandler = () => {
+    this.setState({
+      showRecipe: false,
+      showSpinner: true,
+    });
+    const stateKeys = this.state.ingredients;
+    const filterState = Object.keys(stateKeys).filter((k) => stateKeys[k]);
+
+    const finalRecipe = {
+      recipe: filterState,
+      price: this.state.currentPrice,
+      adress: "Danila Djokica, Sokolac",
+    };
+    axios
+      .post("/post/order.json", finalRecipe)
+      .then((response) => {
+        if (alert("Your pizza is prepering!")) {
+        } else window.location.reload();
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
 
   render() {
     const stateKeys = this.state.ingredients;
@@ -69,12 +98,14 @@ class PizzaBuilder extends Component {
           ingredients={this.state.ingredients}
           showRecipe={this.showRecipeHandler}
         />
-        <OrderList
+        <Modal
           recipe={filterState}
           price={price}
           totalPrice={this.state.currentPrice}
           showRecipe={this.state.showRecipe}
           hideRecipe={this.hideRecipeHandler}
+          buy={this.buyingHandler}
+          showSpinner={this.state.showSpinner}
         />
       </Aux>
     );
