@@ -9,9 +9,9 @@ const mobileMenu = (props) => {
         <li link="/">
           <a href="/">Pizza Builder</a>
         </li>
-        <li link="/">
+        {/* <li link="/">
           <a href="/">Checkout</a>
-        </li>
+        </li> */}
       </ul>
     </div>
   ) : null;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Aux from "../../hoc/Auxilliary";
 import Pizza from "../../components/Pizza/Pizza";
 import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal";
@@ -90,7 +89,7 @@ class PizzaBuilder extends Component {
     const stateKeys = this.state.ingredients;
     const filterState = Object.keys(stateKeys).filter((k) => stateKeys[k]);
     return (
-      <Aux>
+      <>
         <Pizza ingredients={filterState} />
         <BuildControls
           changeButton={this.changeButtonHanler}
@@ -107,7 +106,7 @@ class PizzaBuilder extends Component {
           buy={this.buyingHandler}
           showSpinner={this.state.showSpinner}
         />
-      </Aux>
+      </>
     );
   }
 }

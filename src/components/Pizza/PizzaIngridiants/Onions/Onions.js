@@ -1,10 +1,9 @@
 import React from "react";
 import classes from "./Onions.module.css";
-import Aux from "../../../../hoc/Auxilliary";
 
 const onions = () => {
   return (
-    <Aux>
+    <>
       <div
         className={`${classes.topping} ${classes.onions} ${classes.onions_1}`}
       ></div>
@@ -50,7 +49,7 @@ const onions = () => {
       <div
         className={`${classes.topping} ${classes.onions} ${classes.onions_15}`}
       ></div>
-    </Aux>
+    </>
   );
 };
 

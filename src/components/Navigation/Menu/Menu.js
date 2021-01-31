@@ -6,9 +6,9 @@ const menu = () => (
     <li className={classes.MenuItem} link="/">
       <a href="/">Pizza Builder</a>
     </li>
-    <li className={classes.MenuItem} link="/">
+    {/* <li className={classes.MenuItem} link="/">
       <a href="/">Checkout</a>
-    </li>
+    </li> */}
   </ul>
 );
 export default menu;
