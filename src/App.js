@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Layout from "./Layout/Layout";
 import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
-import Header from "./containers/Header/Header";
+import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
 class App extends Component {
