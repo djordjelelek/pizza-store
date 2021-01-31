@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import Layout from "./components/Layout/Layout";
+import Layout from "./Layout/Layout";
 import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
 import Header from "./containers/Header/Header";
+import Footer from "./Footer/Footer";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Layout>
           <Header />
           <PizzaBuilder />
+          <Footer />
         </Layout>
       </div>
     );
