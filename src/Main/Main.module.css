@@ -1,0 +1,27 @@
+.Main {
+    min-height: 100%;
+    background-color: #ffffff;
+    margin-top: 2px;
+    margin-bottom: -2px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 500px) {
+    .Main {
+        padding: 20px 50px 20px 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Main {
+        padding: 25px 150px 25px 150px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .Main {
+        padding: 30px 250px 30px 250px;
+    }
+}

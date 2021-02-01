@@ -1,0 +1,27 @@
+.SignUp {
+    background-color: blue;
+}
+
+.Container {
+    background-color: azure;
+    padding: 50px;
+}
+
+.GridItem {
+    padding: 10px 10px 10px 10px;
+}
+
+.login-form {
+    justify-content: center;
+    min-height: 90vh;
+}
+
+.button-block {
+    width: 100%;
+}
+
+.login-background {
+    justify-content: center;
+    min-height: 30vh;
+    padding: 50px;
+}
