@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Pizza from "../../components/Pizza/Pizza";
-import BuildControls from "../../components/Pizza/BuildControls/BuildControls";
-import Modal from "../../components/UI/Modal";
+import React, { useState } from "react";
+import Pizza from "./Pizza/Pizza";
+import BuildControls from "./BuildControls/BuildControls";
+import Modal from "./UI/Modal";
 import axios from "../../axios-order-list";
 
 const price = {
@@ -17,98 +17,84 @@ const price = {
   pepperoni: 10,
   olives: 20,
 };
-class PizzaBuilder extends Component {
-  state = {
-    ingredients: {
-      ketchup: false,
-      ham: false,
-      mushrooms: false,
-      meyo: false,
-      chicken: false,
-      beefSauce: false,
-      bacon: false,
-      onions: false,
-      peppers: false,
-      pepperoni: false,
-      olives: false,
-    },
-    currentPrice: 130,
-    showRecipe: false,
-    showSpinner: false,
-  };
-  changeButtonHanler = (arg) => {
-    let ingredient = this.state.ingredients;
-    ingredient[arg] = !ingredient[arg];
-    let currentPrice = this.state.currentPrice;
-    if (ingredient[arg]) currentPrice += price[arg];
-    else currentPrice -= price[arg];
-    this.setState({
-      ingredients: ingredient,
-      currentPrice: currentPrice,
-    });
-  };
-  showRecipeHandler = () => {
-    this.setState({
-      showRecipe: true,
-    });
-  };
-  hideRecipeHandler = () => {
-    this.setState({
-      showRecipe: false,
-    });
-  };
-  spinnerHandler = () => {
-    this.setState({
-      showSpinner: true,
-    });
-  };
-  buyingHandler = () => {
-    this.setState({
-      showRecipe: false,
-      showSpinner: true,
-    });
-    const stateKeys = this.state.ingredients;
-    const filterState = Object.keys(stateKeys).filter((k) => stateKeys[k]);
+const PizzaBuilder = () => {
+  const [ingredients, setIngredients] = useState({
+    ketchup: false,
+    ham: false,
+    mushrooms: false,
+    meyo: false,
+    chicken: false,
+    beefSauce: false,
+    bacon: false,
+    onions: false,
+    peppers: false,
+    pepperoni: false,
+    olives: false,
+  });
+  const [currentPrice, setCurrentPrice] = useState(130);
+  const [showRecipe, setShowRecipe] = useState(false);
 
-    const finalRecipe = {
-      recipe: filterState,
-      price: this.state.currentPrice,
-      adress: "Danila Djokica, Sokolac",
-    };
-    axios
-      .post("/post/order.json", finalRecipe)
-      .then((response) => {
-        if (alert("Your pizza is prepering!")) {
-        } else window.location.reload();
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-  };
+  // changeButtonHanler = (arg) => {
+  //   let ingredient = [...ingredients];
+  //   ingredient[arg] = !ingredient[arg];
+  //   let currentPrice = currentPrice;
+  //   if (ingredient[arg]) currentPrice += price[arg];
+  //   else currentPrice -= price[arg];
 
-  render() {
-    const stateKeys = this.state.ingredients;
-    const filterState = Object.keys(stateKeys).filter((k) => stateKeys[k]);
-    return (
-      <>
-        <Pizza ingredients={filterState} />
-        <BuildControls
-          changeButton={this.changeButtonHanler}
-          price={this.state.currentPrice}
-          ingredients={this.state.ingredients}
-          showRecipe={this.showRecipeHandler}
-        />
-        <Modal
-          recipe={filterState}
-          price={price}
-          totalPrice={this.state.currentPrice}
-          showRecipe={this.state.showRecipe}
-          hideRecipe={this.hideRecipeHandler}
-          buy={this.buyingHandler}
-          showSpinner={this.state.showSpinner}
-        />
-      </>
-    );
-  }
-}
+  //   this.setState({
+  //     ingredients: ingredient,
+  //     currentPrice: currentPrice,
+  //   });
+  // };
+  const showRecipeHandler = () => {
+    setShowRecipe(true);
+  };
+  const hideRecipeHandler = () => {
+    setShowRecipe(false);
+  };
+  // buyingHandler = () => {
+  //   this.setState({
+  //     showRecipe: false,
+  //   });
+  //   const stateKeys = this.state.ingredients;
+  //   const filterState = Object.keys(stateKeys).filter((k) => stateKeys[k]);
+
+  //   const finalRecipe = {
+  //     recipe: filterState,
+  //     price: this.state.currentPrice,
+  //     adress: "Danila Djokica, Sokolac",
+  //   };
+  //   axios
+  //     .post("/post/order.json", finalRecipe)
+  //     .then((response) => {
+  //       if (alert("Your pizza is prepering!")) {
+  //       } else window.location.reload();
+  //       console.log(response);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+
+  const stateKeys = ingredients;
+  const filterState = Object.keys(stateKeys).filter((k) => stateKeys[k]);
+  return (
+    <>
+      <Pizza ingredients={filterState} />
+      <BuildControls
+        // changeButton={changeButtonHanler}
+        price={currentPrice}
+        ingredients={ingredients}
+        showRecipe={showRecipeHandler}
+      />
+      <Modal
+        recipe={filterState}
+        price={price}
+        totalPrice={currentPrice}
+        showRecipe={showRecipe}
+        hideRecipe={hideRecipeHandler}
+        // buy={buyingHandler}
+      />
+    </>
+  );
+};
 
 export default PizzaBuilder;
