@@ -7,9 +7,12 @@ export function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [ser, setSer] = useState("magare");
+  const [logIn, setLogIn] = useState(false);
+  const [token, setToken] = useState("aa");
   return (
-    <AuthContext.Provider values={{ ser }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ logIn, setLogIn, token, setToken }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 

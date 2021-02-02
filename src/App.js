@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import Layout from "./Layout/Layout";
-import PizzaBuilder from "./containers/PizzaBuilder/PizzaBuilder";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import { BrowserRouter } from "react-router-dom";
+import AuthProvider from "./AuthContext/AuthContext";
 
 class App extends Component {
   render() {
@@ -14,8 +14,9 @@ class App extends Component {
         <Layout>
           <BrowserRouter>
             <Header />
-            {/* <PizzaBuilder /> */}
-            <Main />
+            <AuthProvider>
+              <Main />
+            </AuthProvider>
             <Footer />
           </BrowserRouter>
         </Layout>
