@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
   Grid,
   Typography,
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
@@ -72,12 +73,15 @@ export default function SignUp() {
         .then((resp) => {
           setToken(resp.data.idToken);
           setLogIn(true);
+          history.push("/home");
+        })
+        .catch(() => {
+          setAlertText("You have account, already. Please log in.");
+          setAlertShow(true);
         });
     }
   };
   const classes = useStyles();
-  // console.log(nickname);
-  // console.log(token);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -134,12 +138,6 @@ export default function SignUp() {
                 onChange={(event) => setPasswordRepeat(event.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
           </Grid>
           <Button
             type="submit"
@@ -152,8 +150,8 @@ export default function SignUp() {
           </Button>
           <Grid container justify="center">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
+              <Link href="/login" variant="body2">
+                Already have an account? Log in
               </Link>
             </Grid>
           </Grid>

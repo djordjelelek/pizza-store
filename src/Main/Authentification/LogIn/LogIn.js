@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -13,6 +14,7 @@ import {
   Container,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Alert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuth } from "../../../AuthContext/AuthContext";
 
@@ -34,9 +36,14 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  alert: {
+    marginTop: "25px",
+    marginBottom: "-6px",
+  },
 }));
 
 export default function LogIn() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -59,9 +66,13 @@ export default function LogIn() {
         }
       )
       .then((resp) => {
-        console.log(resp);
         setToken(resp.data.idToken);
         setLogIn(true);
+        history.push("/home");
+      })
+      .catch((err) => {
+        setAlertText("Wrong email or password");
+        setAlertShow(true);
       });
   };
 
@@ -77,6 +88,11 @@ export default function LogIn() {
         <Typography component="h1" variant="h5">
           Log in
         </Typography>
+        {alertShow ? (
+          <Alert className={classes.alert} variant="filled" severity="error">
+            {alertText}
+          </Alert>
+        ) : null}
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
@@ -122,7 +138,7 @@ export default function LogIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
