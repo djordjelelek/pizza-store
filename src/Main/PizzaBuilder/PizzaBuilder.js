@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Pizza from "./Pizza/Pizza";
 import BuildControls from "./BuildControls/BuildControls";
+import classes from "./PizzaBuilder.module.css";
 
 const PizzaBuilder = () => {
   const [ingredients, setIngredients] = useState({
@@ -22,13 +23,13 @@ const PizzaBuilder = () => {
   );
 
   return (
-    <>
+    <div className={classes.PizzaBuilder}>
       <Pizza ingredients={ingridientsTrue} />
       <BuildControls
         ingredients={ingredients}
         setIngredients={setIngredients}
       />
-    </>
+    </div>
   );
 };
 

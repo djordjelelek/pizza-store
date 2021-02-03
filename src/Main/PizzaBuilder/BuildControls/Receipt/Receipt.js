@@ -19,11 +19,20 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 400,
-    backgroundColor: "blue",
+    textAlign: "center",
+    transform: "translate(125%, 0%)",
+    width: 300,
+    color: "black",
+    fontSize: "25px",
+    backgroundColor: "white",
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    borderRadius: "10px",
+  },
+
+  button: {
+    marginRight: "5px",
   },
 }));
 const Receipt = (props) => {
@@ -87,6 +96,7 @@ const Receipt = (props) => {
         variant="contained"
         color="primary"
         onClick={() => purchaseHanler()}
+        className={classes.button}
       >
         Buy
       </Button>

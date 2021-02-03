@@ -7,8 +7,14 @@ export function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [logIn, setLogIn] = useState(false);
-  const [token, setToken] = useState("aa");
+  const [logIn, setLogIn] = useState(
+    sessionStorage.getItem("token") !== null ? true : false
+  );
+  const [token, setToken] = useState(
+    sessionStorage.getItem("token") !== null
+      ? sessionStorage.getItem("token")
+      : ""
+  );
   return (
     <AuthContext.Provider value={{ logIn, setLogIn, token, setToken }}>
       {children}

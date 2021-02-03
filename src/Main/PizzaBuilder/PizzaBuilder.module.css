@@ -1,0 +1,12 @@
+.PizzaBuilder {
+    min-height: 100%;
+    background-color: rgba(252, 252, 252, 0.274);
+    text-align: center;
+    margin: auto;
+}
+
+@media (min-width: 1001px) and (min-height: 901px) {
+    .PizzaBuilder {
+        padding: 550px;
+    }
+}

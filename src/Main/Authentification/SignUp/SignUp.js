@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import classesCSS from "./SignUp.module.css";
 import {
   Avatar,
   Button,
@@ -48,7 +48,6 @@ export default function SignUp() {
   const [alertShow, setAlertShow] = useState(false);
   const [alertText, setAlertText] = useState("");
 
-  const { token } = useAuth();
   const { setToken } = useAuth();
   const { setLogIn } = useAuth();
 
@@ -73,6 +72,7 @@ export default function SignUp() {
         .then((resp) => {
           setToken(resp.data.idToken);
           setLogIn(true);
+          localStorage.setItem("token", resp.data.idToken);
           history.push("/home");
         })
         .catch(() => {
@@ -83,80 +83,82 @@ export default function SignUp() {
   };
   const classes = useStyles();
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        {alertShow ? (
-          <Alert className={classes.alert} variant="filled" severity="error">
-            {alertText}
-          </Alert>
-        ) : null}
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                type="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={(event) => setEmail(event.target.value)}
-              />
+    <div className={classesCSS.Container}>
+      <Container component="main" maxWidth="xs" className={classes.Container}>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          {alertShow ? (
+            <Alert className={classes.alert} variant="filled" severity="error">
+              {alertText}
+            </Alert>
+          ) : null}
+          <form className={classes.form} onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  type="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="retipe-password"
+                  label="Retipe Password"
+                  type="password"
+                  id="retipe-password"
+                  autoComplete="current-password"
+                  onChange={(event) => setPasswordRepeat(event.target.value)}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(event) => setPassword(event.target.value)}
-              />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classesCSS.submit}
+            >
+              Sign Up
+            </Button>
+            <Grid container justify="center">
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  Already have an account? Log in
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="retipe-password"
-                label="Retipe Password"
-                type="password"
-                id="retipe-password"
-                autoComplete="current-password"
-                onChange={(event) => setPasswordRepeat(event.target.value)}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="center">
-            <Grid item>
-              <Link href="/login" variant="body2">
-                Already have an account? Log in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+          </form>
+        </div>
+      </Container>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MenuItems.module.css";
+import { useAuth } from "../../../AuthContext/AuthContext";
 
 const menuItems = () => (
   <>
@@ -19,16 +20,19 @@ const menuItems = () => (
         Sign Up
       </NavLink>
     </li> */}
-    <li className={classes.LogIn}>
-      <NavLink
-        to="/login"
-        activeStyle={{ color: "#020A60" }}
-        style={{ color: "#0572ec" }}
-      >
-        Log In
-      </NavLink>
-    </li>
-    {/* <li className={classes.LogIn}>Log Out</li> */}
+    {useAuth.logIn === true ? (
+      <li className={classes.LogIn}>
+        <NavLink
+          to="/login"
+          activeStyle={{ color: "#020A60" }}
+          style={{ color: "#0572ec" }}
+        >
+          Log In
+        </NavLink>
+      </li>
+    ) : (
+      <li className={classes.LogOut}>Log Out</li>
+    )}
   </>
 );
 

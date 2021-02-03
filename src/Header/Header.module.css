@@ -1,5 +1,6 @@
 .Header {
     height: 70px;
+    width: 100%;
     background-color: #ffffff;
     color: #898989;
     display: flex;

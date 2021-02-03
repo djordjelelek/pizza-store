@@ -1,5 +1,5 @@
 .topping {
-    position: absolute;
+    position: relative;
     border: 2px solid rgba(0, 0, 0, 0.1);
     transform: translate(-50%, -50%);
     opacity: 0;
