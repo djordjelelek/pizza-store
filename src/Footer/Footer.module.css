@@ -1,7 +1,7 @@
 .Footer {
     height: 90px;
-    background-color: #20232a;
-    color: white;
+    background-color: #ffffff;
+    color: #898989;
     padding: 10px;
     padding-bottom: 20px;
 }
@@ -10,7 +10,7 @@
     border: 0px;
     height: 1px;
     width: 90%;
-    background-color: #ffffff;
+    background-color: #898989;
     margin-top: 0px;
     margin-top: 2px;
 }
@@ -33,4 +33,5 @@
 
 .Owner {
     font-size: 20px;
+    color: #898989;
 }

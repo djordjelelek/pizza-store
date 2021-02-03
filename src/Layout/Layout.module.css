@@ -5,4 +5,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    min-height: calc(100vh - (78px + 157px));
+    background: #d8af75 url(background-image.jpg);
+    background-color: #d8af75;
 }

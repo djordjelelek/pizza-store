@@ -13,7 +13,7 @@ const footer = () => (
         target="_blank"
         className={classes.LinedIn}
       >
-        <LinkedInIcon fontSize="large" />
+        <LinkedInIcon fontSize="large" color="action" />
       </a>
       <a
         href="https://github.com/djordjelelek"
@@ -21,7 +21,7 @@ const footer = () => (
         rel="noopener noreferrer"
         target="_blank"
       >
-        <GitHubIcon fontSize="large" />
+        <GitHubIcon fontSize="large" color="action" />
       </a>
     </div>
     <p className={classes.Owner}>Created by: Djordje Lelek</p>

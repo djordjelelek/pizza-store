@@ -1,18 +1,11 @@
 .Header {
-    height: 56px;
-    width: 100%;
-    position: fix;
-    margin-top: 0;
-    margin-left: 0;
-    background-color: #e5e7e446;
+    height: 70px;
+    background-color: #ffffff;
+    color: #898989;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
-}
-
-.Header nav {
-    height: 100%;
 }
