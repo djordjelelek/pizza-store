@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import { useAuth } from "../../../../AuthContext/AuthContext";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const Receipt = (props) => {
   const [modalStyle] = useState(getModalStyle);
   const classes = useStyles();
+  const { token } = useAuth();
 
   const listItems = Object.keys(props.ingredients).filter(
     (el) => props.ingredients[el].show
@@ -45,7 +47,7 @@ const Receipt = (props) => {
 
   const purchaseHanler = () => {
     const day = new Date().getDay();
-    const mounth = new Date().getDate();
+    const mounth = new Date().getDate() - 1;
     const year = new Date().getFullYear();
     const hours = new Date().getHours();
     const minutes = new Date().getMinutes();
@@ -67,9 +69,11 @@ const Receipt = (props) => {
         ":" +
         seconds,
     };
+
     axios
       .post(
-        "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json",
+        "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json?auth=" +
+          token,
         finalRecipe
       )
       .then((response) => {
@@ -78,7 +82,6 @@ const Receipt = (props) => {
         console.log(response);
       });
   };
-
   return (
     <div style={modalStyle} className={classes.paper}>
       <h2>RECIPE</h2>

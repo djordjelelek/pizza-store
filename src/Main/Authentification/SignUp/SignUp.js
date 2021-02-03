@@ -70,9 +70,10 @@ export default function SignUp() {
           }
         )
         .then((resp) => {
+          console.log("111111111");
           setToken(resp.data.idToken);
           setLogIn(true);
-          localStorage.setItem("token", resp.data.idToken);
+          sessionStorage.setItem("token", resp.data.idToken);
           history.push("/home");
         })
         .catch(() => {

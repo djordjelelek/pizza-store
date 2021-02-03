@@ -3,6 +3,7 @@
     height: 92%;
     padding: 5px;
     margin-left: -20px;
+    cursor: pointer;
 }
 
 @media (min-width: 500px) {

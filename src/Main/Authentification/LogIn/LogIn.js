@@ -51,7 +51,6 @@ export default function LogIn() {
   const [alertShow, setAlertShow] = useState(false);
   const [alertText, setAlertText] = useState("");
 
-  const { token } = useAuth();
   const { setToken } = useAuth();
   const { setLogIn } = useAuth();
 
@@ -69,7 +68,7 @@ export default function LogIn() {
       .then((resp) => {
         setToken(resp.data.idToken);
         setLogIn(true);
-        localStorage.setItem("token", resp.data.idToken);
+        sessionStorage.setItem("token", resp.data.idToken);
         history.push("/home");
       })
       .catch((err) => {
@@ -77,9 +76,8 @@ export default function LogIn() {
         setAlertShow(true);
       });
   };
-
   const classes = useStyles();
-  console.log(token);
+
   return (
     <div className={classesCSS.Container}>
       <Container component="main" maxWidth="xs">
@@ -132,7 +130,7 @@ export default function LogIn() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Log in
             </Button>
             <Grid container>
               <Grid item xs>

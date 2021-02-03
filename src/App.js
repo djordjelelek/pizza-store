@@ -13,8 +13,8 @@ class App extends Component {
       <div className="App">
         <Layout>
           <BrowserRouter>
-            <Header />
             <AuthProvider>
+              <Header />
               <Main />
             </AuthProvider>
             <Footer />
