@@ -1,4 +1,15 @@
 .Header {
+    color: #ffffff;
     font-size: 43px;
     margin-top: -10px;
+}
+
+.NoOrders {
+    color: rgb(255, 255, 255);
+    padding: 70px;
+}
+
+.Link {
+    text-decoration: none;
+    color: rgb(40, 40, 218);
 }

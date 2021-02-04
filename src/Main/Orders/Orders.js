@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     height: 250,
     width: 400,
     color: "#898989",
-    paddingTop: "1px",
+    paddingTop: "0px",
   },
   control: {
     padding: theme.spacing(2),
@@ -25,6 +25,7 @@ const Orders = () => {
   const classes = useStyles();
   const [ordersList, setOrdersList] = useState([]);
   const { token } = useAuth();
+  const { logIn } = useAuth();
   const { userId } = useAuth();
 
   const getOrders = () => {
@@ -49,7 +50,7 @@ const Orders = () => {
     getOrders();
   }, []);
 
-  return ordersList.length > 0 ? (
+  return logIn && ordersList.length > 0 ? (
     <>
       <h1 className={classesCSS.Header}>ORDERS</h1>
       <Grid container className={classes.root} spacing={2}>
@@ -60,11 +61,20 @@ const Orders = () => {
                 <Paper className={classes.paper}>
                   <h1>Order</h1>
                   <p>
-                    <strong>ingridents</strong>:{" "}
+                    <strong>ingridents</strong>:
                     {value.recipe.map((ingr) => ingr + ", ")}
                   </p>
                   <p>
                     <strong>price</strong>: {value.price} RSD
+                  </p>
+                  <p>
+                    <strong>discount</strong>: 20%
+                  </p>
+                  <p>
+                    <strong>
+                      total price: {Math.round(value.price * 0.8 * 100) / 100}{" "}
+                      RSD
+                    </strong>
                   </p>
                   <p>{value.date}</p>
                 </Paper>
@@ -74,7 +84,33 @@ const Orders = () => {
         </Grid>
       </Grid>
     </>
-  ) : null;
+  ) : logIn ? (
+    <div>
+      <h1 className={classesCSS.NoOrders}>
+        There is no order yet <br /> With every online order you gain 20% off
+        <br />
+        Make order{" "}
+        <a href="/home" className={classesCSS.Link}>
+          now
+        </a>
+      </h1>
+    </div>
+  ) : (
+    <div>
+      <h1 className={classesCSS.NoOrders}>
+        You are not signed in
+        <br /> Please{" "}
+        <a href="/login" className={classesCSS.Link}>
+          LogIn
+        </a>{" "}
+        or{" "}
+        <a href="/signup" className={classesCSS.Link}>
+          SignUp
+        </a>{" "}
+        for 20% discount on each order
+      </h1>
+    </div>
+  );
 };
 
 export default Orders;

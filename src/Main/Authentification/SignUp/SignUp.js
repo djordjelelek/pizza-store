@@ -73,8 +73,7 @@ export default function SignUp() {
         .then(() => {
           setLoading(true);
           setTimeout(() => {
-            setLogIn(true);
-            history.push("/home");
+            history.push("/login");
           }, 2000);
         })
         .catch(() => {
@@ -110,7 +109,7 @@ export default function SignUp() {
               </Alert>
             ) : null}
             <form className={classes.form} onSubmit={handleSubmit}>
-              <Grid container spacing={2}>
+              <Grid container spacing={2} className={classesCSS.RetipePassword}>
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"

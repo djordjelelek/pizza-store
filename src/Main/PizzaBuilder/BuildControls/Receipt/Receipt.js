@@ -7,34 +7,29 @@ import { useAuth } from "../../../../AuthContext/AuthContext";
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
+
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
+
   return {
-    top: "10%",
-    left: "15%",
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    textAlign: "center",
-    transform: "translate(50%, 0%)",
-    width: 300,
-    color: "black",
-    fontSize: "25px",
-    backgroundColor: "white",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    borderRadius: "10px",
-  },
-
-  button: {
-    marginRight: "5px",
   },
 }));
+
 const Receipt = (props) => {
   const [modalStyle] = useState(getModalStyle);
   const classes = useStyles();
@@ -94,7 +89,17 @@ const Receipt = (props) => {
           </li>
         ))}
       </ol>
-      <p>Total price: {props.price}</p>
+      <p>
+        <strong>price: {props.price} RSD</strong>
+      </p>
+      <p>
+        <strong>discount: 20%</strong>
+      </p>
+      <h3>
+        <strong>
+          final price: {Math.round(props.price * 0.8 * 100) / 100} RSD
+        </strong>
+      </h3>
 
       <Button
         variant="contained"
