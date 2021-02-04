@@ -11,11 +11,14 @@ const BuildControls = (props) => {
   const handleOpenClose = () => {
     setShowRecipe(!showRecipe);
   };
-  const changeButtonHanler = (ingr) => {
+  const changeButtonHanler = (ingr, value) => {
     const ingidentsUpdate = { ...props.ingredients };
     ingidentsUpdate[ingr].show = !props.ingredients[ingr].show;
     props.setIngredients({ ...ingidentsUpdate });
-    setPrice((price) => price + props.ingredients[ingr].price);
+    if (value === "add")
+      setPrice((price) => price + props.ingredients[ingr].price);
+    else if (value === "remove")
+      setPrice((price) => price - props.ingredients[ingr].price);
   };
   return (
     <div>
@@ -28,18 +31,18 @@ const BuildControls = (props) => {
                 variant="contained"
                 color="primary"
                 size="small"
-                onClick={() => changeButtonHanler(ingrident)}
+                onClick={() => changeButtonHanler(ingrident, "remove")}
               >
-                Add
+                Remove
               </Button>
             ) : (
               <Button
                 variant="contained"
                 color="default"
                 size="small"
-                onClick={() => changeButtonHanler(ingrident)}
+                onClick={() => changeButtonHanler(ingrident, "add")}
               >
-                Remove
+                Add
               </Button>
             )}
           </div>

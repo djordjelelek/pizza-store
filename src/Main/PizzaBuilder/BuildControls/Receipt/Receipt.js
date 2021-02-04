@@ -10,7 +10,6 @@ function rand() {
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
-
   return {
     top: "10%",
     left: "15%",
@@ -53,6 +52,7 @@ const Receipt = (props) => {
     const minutes = new Date().getMinutes();
     const seconds = new Date().getMinutes();
     const finalRecipe = {
+      userId: token,
       recipe: listItems,
       price: props.price,
       date:
@@ -79,7 +79,7 @@ const Receipt = (props) => {
       .then((response) => {
         // if (alert("Your pizza is prepering!")) {
         // } else window.location.reload();
-        console.log(response);
+        // console.log(response);
       });
   };
   return (
