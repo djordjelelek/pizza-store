@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MenuItems.module.css";
 import { useAuth } from "../../../AuthContext/AuthContext";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const MenuItems = () => {
+  const [loading, setLoading] = useState(false);
   const { logIn } = useAuth();
   const { setLogIn } = useAuth();
   const { setToken } = useAuth();
@@ -24,10 +26,10 @@ const MenuItems = () => {
         <li className={classes.LogIn}>
           <NavLink
             to="/login"
-            activeStyle={{ color: "#079438" }}
-            style={{ color: "#03fc1c" }}
+            activeStyle={{ color: "#007806" }}
+            style={{ color: "#04d90f" }}
           >
-            Log In
+            <strong>Log In</strong>
           </NavLink>
         </li>
       ) : (
@@ -35,6 +37,7 @@ const MenuItems = () => {
           <button
             className={classes.LogOut}
             onClick={() => {
+              setLoading(true);
               setLogIn(false);
               setToken("");
               setUserId("");
@@ -42,13 +45,19 @@ const MenuItems = () => {
               sessionStorage.removeItem("userId");
               setTimeout(() => {
                 window.location.reload();
-              }, 1000);
+              }, 2000);
             }}
           >
-            Log Out
+            <strong>Log Out</strong>
           </button>
         </li>
       )}
+      {loading ? (
+        <>
+          <div className={classes.SpinnerContainer}></div>
+          <CircularProgress color="secondary" className={classes.Spinner} />
+        </>
+      ) : null}
     </>
   );
 };

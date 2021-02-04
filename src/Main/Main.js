@@ -21,7 +21,7 @@ function Main() {
           <Route path="/signup" component={SignUp} />
         )}
         {logIn ? (
-          <Redirect from="/login" to="/home" />
+          <Route path="/login" component={LogIn} />
         ) : (
           <Route path="/login" component={LogIn} />
         )}

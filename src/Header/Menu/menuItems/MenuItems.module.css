@@ -15,3 +15,22 @@
     font-size: 15px;
     color: rgb(255, 71, 71);
 }
+
+.SpinnerContainer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    text-align: end;
+    padding-left: 30px;
+}
+
+.Spinner {
+    margin-left: -50px;
+}
+
+.root {
+    size: 100
+}
