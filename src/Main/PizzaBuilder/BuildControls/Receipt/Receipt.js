@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
     textAlign: "center",
-    transform: "translate(125%, 0%)",
+    transform: "translate(50%, 0%)",
     width: 300,
     color: "black",
     fontSize: "25px",

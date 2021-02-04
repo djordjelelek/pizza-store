@@ -44,9 +44,9 @@ const BuildControls = (props) => {
             )}
           </div>
         ))}
-        <p>
-          Current price: <strong>{price} RSD</strong>
-        </p>
+        <h1 className={classes.Header}>
+          &nbsp;&nbsp;Current price: <strong>{price} RSD</strong>&nbsp;&nbsp;
+        </h1>
         <Modal
           open={showRecipe}
           onClose={handleOpenClose}

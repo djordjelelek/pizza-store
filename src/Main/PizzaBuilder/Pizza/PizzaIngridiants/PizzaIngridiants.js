@@ -10,7 +10,6 @@ import Mushrooms from "./Mushrooms/Mushrooms";
 import Olives from "./Olives/Olives";
 import Onions from "./Onions/Onions";
 import Peppers from "./Peppers/Peppers";
-import Pepperoni from "./Pepperoni/Pepperoni";
 
 const BurgerIngredient = (props) => {
   let ingredient = null;
@@ -44,9 +43,6 @@ const BurgerIngredient = (props) => {
       break;
     case "peppers":
       ingredient = <Peppers />;
-      break;
-    case "pepperoni":
-      ingredient = <Pepperoni />;
       break;
     default:
       ingredient = null;

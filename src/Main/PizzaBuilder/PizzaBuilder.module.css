@@ -5,8 +5,9 @@
     margin: auto;
 }
 
-@media (min-width: 1001px) and (min-height: 901px) {
+@media (min-width: 1001px) {
     .PizzaBuilder {
-        padding: 550px;
+        /* padding: 550px; */
+        display: flex;
     }
 }

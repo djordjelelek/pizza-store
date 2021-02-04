@@ -23,8 +23,8 @@ const MenuItems = () => {
         <li className={classes.LogIn}>
           <NavLink
             to="/login"
-            activeStyle={{ color: "#020A60" }}
-            style={{ color: "#0572ec" }}
+            activeStyle={{ color: "#079438" }}
+            style={{ color: "#03fc1c" }}
           >
             Log In
           </NavLink>
@@ -37,6 +37,9 @@ const MenuItems = () => {
               setLogIn(false);
               setToken("");
               sessionStorage.removeItem("token");
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
             }}
           >
             Log Out

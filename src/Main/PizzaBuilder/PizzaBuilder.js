@@ -14,7 +14,6 @@ const PizzaBuilder = () => {
     bacon: { price: 40, show: false },
     onions: { price: 10, show: false },
     peppers: { price: 10, show: false },
-    pepperoni: { price: 10, show: false },
     olives: { price: 20, show: false },
   });
 
