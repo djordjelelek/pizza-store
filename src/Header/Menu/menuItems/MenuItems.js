@@ -38,12 +38,12 @@ const MenuItems = () => {
             className={classes.LogOut}
             onClick={() => {
               setLoading(true);
-              setLogIn(false);
-              setToken("");
-              setUserId("");
-              sessionStorage.removeItem("token");
-              sessionStorage.removeItem("userId");
               setTimeout(() => {
+                setLogIn(false);
+                setToken("");
+                setUserId("");
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("userId");
                 window.location.reload();
               }, 2000);
             }}

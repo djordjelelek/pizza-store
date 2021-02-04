@@ -44,14 +44,11 @@ const Orders = () => {
       });
   };
   useEffect(() => {
-    // const getOrders = () => {
-    //   axios.get("https://pizza-app-rg-default-rtdb.firebaseio.com/orders");
-    // };
     getOrders();
-  }, []);
+  });
 
   return logIn && ordersList.length > 0 ? (
-    <>
+    <div className={classesCSS.Orders}>
       <h1 className={classesCSS.Header}>ORDERS</h1>
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
@@ -83,7 +80,7 @@ const Orders = () => {
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </div>
   ) : logIn ? (
     <div>
       <h1 className={classesCSS.NoOrders}>

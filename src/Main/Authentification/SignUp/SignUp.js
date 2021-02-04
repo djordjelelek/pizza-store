@@ -50,8 +50,6 @@ export default function SignUp() {
   const [alertText, setAlertText] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { setLogIn } = useAuth();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== passwordRepeat) {

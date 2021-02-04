@@ -1,0 +1,18 @@
+.SpinnerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.NoOrders {
+    color: #898989;
+    /* padding: 70px; */
+}
+
+.Link {
+    text-decoration: none;
+    color: rgb(40, 40, 218);
+}
