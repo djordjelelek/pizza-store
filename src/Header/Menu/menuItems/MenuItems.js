@@ -7,6 +7,7 @@ const MenuItems = () => {
   const { logIn } = useAuth();
   const { setLogIn } = useAuth();
   const { setToken } = useAuth();
+  const { setUserId } = useAuth();
   return (
     <>
       <li>
@@ -36,7 +37,9 @@ const MenuItems = () => {
             onClick={() => {
               setLogIn(false);
               setToken("");
+              setUserId("");
               sessionStorage.removeItem("token");
+              sessionStorage.removeItem("userId");
               setTimeout(() => {
                 window.location.reload();
               }, 1000);

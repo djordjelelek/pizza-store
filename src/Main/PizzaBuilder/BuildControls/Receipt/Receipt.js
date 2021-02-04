@@ -39,6 +39,7 @@ const Receipt = (props) => {
   const [modalStyle] = useState(getModalStyle);
   const classes = useStyles();
   const { token } = useAuth();
+  const { userId } = useAuth();
 
   const listItems = Object.keys(props.ingredients).filter(
     (el) => props.ingredients[el].show
@@ -52,7 +53,7 @@ const Receipt = (props) => {
     const minutes = new Date().getMinutes();
     const seconds = new Date().getMinutes();
     const finalRecipe = {
-      userId: token,
+      userId: userId,
       recipe: listItems,
       price: props.price,
       date:

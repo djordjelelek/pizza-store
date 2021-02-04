@@ -25,6 +25,7 @@ const Orders = () => {
   const classes = useStyles();
   const [ordersList, setOrdersList] = useState([]);
   const { token } = useAuth();
+  const { userId } = useAuth();
 
   const getOrders = () => {
     axios
@@ -33,7 +34,7 @@ const Orders = () => {
           "?auth=" +
           token +
           '&orderBy="userId"&equalTo="' +
-          token +
+          userId +
           '"'
       )
       .then((response) => {

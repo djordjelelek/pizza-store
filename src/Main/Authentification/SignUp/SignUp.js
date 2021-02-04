@@ -50,6 +50,7 @@ export default function SignUp() {
 
   const { setToken } = useAuth();
   const { setLogIn } = useAuth();
+  const { setUserId } = useAuth();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -72,8 +73,10 @@ export default function SignUp() {
         .then((resp) => {
           console.log("111111111");
           setToken(resp.data.idToken);
+          setUserId(resp.data.localId);
           setLogIn(true);
           sessionStorage.setItem("token", resp.data.idToken);
+          sessionStorage.setItem("userId", resp.data.localId);
           history.push("/home");
         })
         .catch(() => {

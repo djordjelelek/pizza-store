@@ -51,6 +51,7 @@ export default function LogIn() {
 
   const { setToken } = useAuth();
   const { setLogIn } = useAuth();
+  const { setUserId } = useAuth();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -64,9 +65,12 @@ export default function LogIn() {
         }
       )
       .then((resp) => {
+        console.log(resp.data.localId);
         setToken(resp.data.idToken);
+        setUserId(resp.data.localId);
         setLogIn(true);
         sessionStorage.setItem("token", resp.data.idToken);
+        sessionStorage.setItem("userId", resp.data.localId);
         history.push("/home");
       })
       .catch((err) => {
