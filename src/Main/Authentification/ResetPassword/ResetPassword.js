@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import classesCSS from "./LogIn.module.css";
+import classesCSS from "./ResetPassword.module.css";
 import {
   Avatar,
   Button,
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LogIn() {
+export default function ResetPassword() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -95,7 +95,7 @@ export default function LogIn() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Log in
+              Reset Password
             </Typography>
             {alertShow && loading === false ? (
               <Alert
@@ -123,22 +123,6 @@ export default function LogIn() {
                 autoFocus
                 onChange={(event) => setEmail(event.target.value)}
               />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(event) => setPassword(event.target.value)}
-              />
-              {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
               <Button
                 type="submit"
                 fullWidth
@@ -146,19 +130,12 @@ export default function LogIn() {
                 color="primary"
                 className={classes.submit}
               >
-                Log in
+                Send email
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="/reset-password" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
               </Grid>
             </form>
           </div>
