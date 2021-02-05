@@ -29,24 +29,23 @@ const Orders = () => {
   const { logIn } = useAuth();
   const { userId } = useAuth();
 
-  const getOrders = () => {
-    axios
-      .get(
-        "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json" +
-          "?auth=" +
-          token +
-          '&orderBy="userId"&equalTo="' +
-          userId +
-          '"'
-      )
-      .then((response) => {
-        console.log(Object.values(response.data));
-        setOrdersList(Object.values(response.data));
-      });
-  };
   useEffect(() => {
+    const getOrders = () => {
+      axios
+        .get(
+          "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json" +
+            "?auth=" +
+            token +
+            '&orderBy="userId"&equalTo="' +
+            userId +
+            '"'
+        )
+        .then((response) => {
+          setOrdersList(Object.values(response.data));
+        });
+    };
     getOrders();
-  });
+  }, []);
 
   return logIn && ordersList.length > 0 ? (
     <div className={classesCSS.Orders}>
@@ -54,8 +53,8 @@ const Orders = () => {
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={4}>
-            {ordersList.map((value) => (
-              <Grid key={value} item>
+            {ordersList.map((value, index) => (
+              <Grid key={index} item>
                 <Paper className={classes.paper}>
                   <h1>Order</h1>
                   <p>

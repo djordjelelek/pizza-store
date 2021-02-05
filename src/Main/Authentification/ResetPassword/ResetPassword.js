@@ -16,7 +16,6 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Alert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
-import { useAuth } from "../../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,42 +44,30 @@ const useStyles = makeStyles((theme) => ({
 export default function ResetPassword() {
   const history = useHistory();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
-
-  const [alertShow, setAlertShow] = useState(false);
-  const [alertText, setAlertText] = useState("");
-
-  const { setToken } = useAuth();
-  const { setLogIn } = useAuth();
-  const { setUserId } = useAuth();
+  const [alertShowSucces, setAlertShowSucces] = useState(false);
+  const [alertShowError, setAlertShowError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAVl1sWfC2oInNN52Fni_otTw5qT8jP_To",
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAVl1sWfC2oInNN52Fni_otTw5qT8jP_To",
         {
+          requestType: "PASSWORD_RESET",
           email: email,
-          password: password,
-          returnSecureToken: true,
         }
       )
       .then((resp) => {
+        setAlertShowSucces(true);
         setLoading(true);
-        setToken(resp.data.idToken);
-        setUserId(resp.data.localId);
-
-        sessionStorage.setItem("token", resp.data.idToken);
-        sessionStorage.setItem("userId", resp.data.localId);
         setTimeout(() => {
-          setLogIn(true);
-          history.push("/home");
+          history.push("/login");
         }, 2000);
       })
-      .catch((err) => {
-        setAlertText("Wrong email or password");
-        setAlertShow(true);
+      .catch(() => {
+        setAlertShowError(true);
       });
   };
   const classes = useStyles();
@@ -97,17 +84,17 @@ export default function ResetPassword() {
             <Typography component="h1" variant="h5">
               Reset Password
             </Typography>
-            {alertShow && loading === false ? (
+            {alertShowError && loading === false ? (
               <Alert
                 className={classes.alert}
                 variant="filled"
                 severity="error"
               >
-                {alertText}
+                Email doesn`t exist!
               </Alert>
-            ) : loading ? (
-              <Alert variant="filled" severity="success">
-                You Have Successfully Logged in
+            ) : alertShowSucces ? (
+              <Alert variant="filled" severity="info">
+                You have recive email reset password
               </Alert>
             ) : null}
             <form className={classes.form} noValidate onSubmit={handleSubmit}>
