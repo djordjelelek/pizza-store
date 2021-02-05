@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: 300,
     backgroundColor: "white",
     color: "black",
-    fontSize: "15px",
+    fontSize: "14px",
     border: "2px solid #000",
     borderRadius: "10px",
     boxShadow: theme.shadows[5],
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Receipt = (props) => {
   const [modalStyle] = useState(getModalStyle);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
   const classes = useStyles();
   const { token } = useAuth();
@@ -84,13 +84,18 @@ const Receipt = (props) => {
       .then(() => {
         setLoading(true);
         setTimeout(() => {
-          history.push("/home");
+          history.push("/orders");
         }, 2000);
       });
   };
   const body = logIn ? (
     <div style={modalStyle} className={classes.paper}>
-      <h2>RECIPE</h2>
+      <h3>RECIPE</h3>
+      {loading ? (
+        <h3 className={classesCSS.HeaderBuying}>
+          Thank you for ordering. Enjoy your meal
+        </h3>
+      ) : null}
       <ol>
         <li>pizza: 130 RSD</li>
         {listItems.map((ingr, index) => (
@@ -127,9 +132,12 @@ const Receipt = (props) => {
         Cancel
       </Button>
       {loading ? (
-        <div className={classesCSS.SpinnerContainer}>
-          <CircularProgress />
-        </div>
+        <>
+          <div className={classesCSS.SpinnerContainer}>
+            <CircularProgress />
+          </div>
+          <div className={classesCSS.Container}></div>
+        </>
       ) : null}
     </div>
   ) : (
