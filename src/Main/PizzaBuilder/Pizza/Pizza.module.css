@@ -1,9 +1,10 @@
 .pizza {
-    padding: 10px;
-    margin: 30px;
+    /* padding: 10px; */
+    /* margin: 30px; */
     position: relative;
     text-align: center;
-    width: 280px;
+    background-color: rgb(15, 15, 236);
+    /* width: 280px; */
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.1);
     background: linear-gradient(transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), linear-gradient(90deg, transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), linear-gradient(45deg, transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), linear-gradient(-45deg, transparent 49.85%, rgba(0, 0, 0, 0.04) 49.85%, rgba(0, 0, 0, 0.04) 50.15%, transparent 50.15%), radial-gradient(circle, #fcfc8f, #fdfd81 59.5%, #c79d81 60%, #836551 70%);

@@ -1,9 +1,43 @@
 import React, { useState } from "react";
 import Pizza from "./Pizza/Pizza";
 import BuildControls from "./BuildControls/BuildControls";
-import classes from "./PizzaBuilder.module.css";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   paddingBottom: "10px",
+  //   paddingTop: "10px",
+  //   backgroundColor: "rgba(252, 252, 252, 0.274)",
+  //   textAlign: "center",
+  // },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    // padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  paper1: {
+    height: 140,
+    width: 200,
+  },
+  paper2: {
+    height: 140,
+    width: 200,
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+}));
 
 const PizzaBuilder = () => {
+  const classes = useStyles();
   const [ingredients, setIngredients] = useState({
     ketchup: { price: 1, show: false },
     ham: { price: 1, show: false },
@@ -22,12 +56,22 @@ const PizzaBuilder = () => {
   );
 
   return (
-    <div className={classes.PizzaBuilder}>
-      <Pizza ingredients={ingridientsTrue} />
-      <BuildControls
-        ingredients={ingredients}
-        setIngredients={setIngredients}
-      />
+    <div className={classes.root}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={8}>
+          <Paper className={classes.paper}>
+            <Pizza ingredients={ingridientsTrue} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.paper}>
+            <BuildControls
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+            />
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 };

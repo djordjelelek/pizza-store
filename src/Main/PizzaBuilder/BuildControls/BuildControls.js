@@ -27,7 +27,6 @@ const BuildControls = (props) => {
     <div className={classes.BuildControls}>
       {Object.keys(props.ingredients).map((ingrident, index) => (
         <div className={classes.BuildControl} key={index}>
-          <div className={classes.Label}>{ingrident}</div>
           {props.ingredients[ingrident].show ? (
             <Button
               variant="contained"
@@ -35,7 +34,7 @@ const BuildControls = (props) => {
               size="small"
               onClick={() => changeButtonHanler(ingrident, "remove")}
             >
-              Remove
+              Remove {ingrident}
             </Button>
           ) : (
             <Button
@@ -44,7 +43,7 @@ const BuildControls = (props) => {
               size="small"
               onClick={() => changeButtonHanler(ingrident, "add")}
             >
-              Add
+              Add {ingrident}
             </Button>
           )}
         </div>

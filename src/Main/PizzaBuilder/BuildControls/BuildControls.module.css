@@ -1,16 +1,19 @@
 .BuildControls {
-    width: 100%;
-    background-color: #ffffff48;
+    /* width: 100%; */
+    background-color: #ec565648;
     color: #898989;
-    display: flex;
+    /* display: flex;
     flex-flow: column;
     align-items: center;
+    padding: auto; */
+    /* margin-top: 20px; */
     /* box-shadow: 0 2px 1px #ccc; */
-    margin: auto;
-    padding: 10px 0;
+    /* margin: auto; */
+    /* padding: 10px 0; */
 }
 
-.BuildControl {
+
+/* .BuildControl {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,4 +28,4 @@
 
 .Header {
     color: #666565;
-}
+} */
