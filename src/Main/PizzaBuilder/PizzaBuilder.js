@@ -17,9 +17,12 @@ const useStyles = makeStyles((theme) => ({
   // },
   root: {
     flexGrow: 1,
+    textAlign: "center",
+    backgroundColor: "blue",
+    padding: "20px",
   },
   paper: {
-    // padding: theme.spacing(2),
+    padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
   },
   control: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
   },
 }));
 
@@ -56,14 +59,14 @@ const PizzaBuilder = () => {
   );
 
   return (
-    <div className={classes.root}>
+    <Container className={classes.root}>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={8}>
+        <Grid item lg={8}>
           <Paper className={classes.paper}>
             <Pizza ingredients={ingridientsTrue} />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item lg={4}>
           <Paper className={classes.paper}>
             <BuildControls
               ingredients={ingredients}
@@ -72,7 +75,7 @@ const PizzaBuilder = () => {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 };
 

@@ -2,10 +2,27 @@ import React, { useState } from "react";
 import classes from "./BuildControls.module.css";
 import Button from "@material-ui/core/Button";
 import Receipt from "./Receipt/Receipt";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // flexGrow: 1,
+    // textAlign: "center",
+    backgroundColor: "red",
+    position: "relative",
+    margin: "0px",
+    marginBottom: "0px",
+
+    // paddingTop: "20px",
+    // paddingBottom: "0px",
+  },
+}));
 
 const BuildControls = (props) => {
   const [price, setPrice] = useState(130);
   const [showRecipe, setShowRecipe] = useState(false);
+  const classes = useStyles();
 
   const handleOpen = () => {
     setShowRecipe(true);
@@ -24,7 +41,7 @@ const BuildControls = (props) => {
       setPrice((price) => price - props.ingredients[ingr].price);
   };
   return (
-    <div className={classes.BuildControls}>
+    <Container className={classes.root}>
       {Object.keys(props.ingredients).map((ingrident, index) => (
         <div className={classes.BuildControl} key={index}>
           {props.ingredients[ingrident].show ? (
@@ -69,7 +86,7 @@ const BuildControls = (props) => {
       >
         Order
       </Button>
-    </div>
+    </Container>
   );
 };
 
