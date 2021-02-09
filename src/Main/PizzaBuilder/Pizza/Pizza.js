@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: "50%",
     right: "50%",
     left: "50%",
+    textAlign: "center",
     // marginBottom: "-5px",
     // marginBottom: "0px",
     // paddingTop: "20px",

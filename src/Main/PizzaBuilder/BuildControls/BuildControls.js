@@ -13,9 +13,14 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     margin: "0px",
     marginBottom: "0px",
-
+    padding: "10px",
     // paddingTop: "20px",
     // paddingBottom: "0px",
+  },
+  buttons: {
+    paddingLeft: "40px",
+    paddingRight: "40px",
+    paddingBottom: "5px",
   },
 }));
 
@@ -43,12 +48,13 @@ const BuildControls = (props) => {
   return (
     <Container className={classes.root}>
       {Object.keys(props.ingredients).map((ingrident, index) => (
-        <div className={classes.BuildControl} key={index}>
+        <div className={classes.buttons} key={index}>
           {props.ingredients[ingrident].show ? (
             <Button
               variant="contained"
               color="primary"
               size="small"
+              fullWidth
               onClick={() => changeButtonHanler(ingrident, "remove")}
             >
               Remove {ingrident}
@@ -58,6 +64,7 @@ const BuildControls = (props) => {
               variant="contained"
               color="default"
               size="small"
+              fullWidth
               onClick={() => changeButtonHanler(ingrident, "add")}
             >
               Add {ingrident}
