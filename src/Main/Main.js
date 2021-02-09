@@ -1,7 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import PizzaBuilder from "./PizzaBuilder/PizzaBuilder";
-import Orders from "./Orders/Orders";
+import Cart from "./Cart/Cart";
+import OrdersHistory from "./OrdersHistory/OrdersHistory";
 import SignUp from "./Authentification/SignUp/SignUp";
 import LogIn from "./Authentification/LogIn/LogIn";
 import ResetPassword from "./Authentification/ResetPassword/ResetPassword";
@@ -24,7 +25,8 @@ const Main = () => {
       <Switch>
         <Route path="/home" exact component={PizzaBuilder} />
         <Redirect from="/" exact to="/home" />
-        <Route path="/orders" component={Orders} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/orders-history" component={OrdersHistory} />
         {logIn ? (
           <>
             <Redirect from="/signup" to="/home" />

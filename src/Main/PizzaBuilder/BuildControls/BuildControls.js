@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Receipt from "./Receipt/Receipt";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
+import SnackBar from "./SnackBar/SnackBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,16 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 const BuildControls = (props) => {
   const [price, setPrice] = useState(130);
-  const [showRecipe, setShowRecipe] = useState(false);
   const classes = useStyles();
 
-  const handleOpen = () => {
-    setShowRecipe(true);
-  };
-
-  const handleClose = () => {
-    setShowRecipe(false);
-  };
   const changeButtonHanler = (ingr, value) => {
     const ingidentsUpdate = { ...props.ingredients };
     ingidentsUpdate[ingr].show = !props.ingredients[ingr].show;
@@ -75,24 +68,25 @@ const BuildControls = (props) => {
       <h1 className={classes.Header}>
         &nbsp;&nbsp;Current price: <strong>{price} RSD</strong>&nbsp;&nbsp;
       </h1>
-      <Receipt
+      {/* <Receipt
         ingredients={props.ingredients}
         price={price}
         setShowRecipe={setShowRecipe}
         showRecipe={showRecipe}
         handleClose={handleClose}
-      />
-      <Button
+      /> */}
+      {/* <Button
         disabled={price === 130}
         variant="contained"
         color="primary"
         size="large"
-        className={classes.OrderButton}
+        // className={classes.OrderButton}
         type="button"
         onClick={() => handleOpen()}
       >
         Order
-      </Button>
+      </Button> */}
+      <SnackBar price={price} ingredients={props.ingredients} />
     </Container>
   );
 };

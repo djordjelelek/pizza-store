@@ -84,7 +84,7 @@ const Receipt = (props) => {
       .then(() => {
         setLoading(true);
         setTimeout(() => {
-          history.push("/orders");
+          history.push("/cart");
         }, 2000);
       });
   };

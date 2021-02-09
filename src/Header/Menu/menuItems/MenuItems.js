@@ -18,8 +18,13 @@ const MenuItems = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/orders" activeStyle={{ color: "#2b2b2b" }}>
-          Orders
+        <NavLink to="/cart" activeStyle={{ color: "#2b2b2b" }}>
+          Cart
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/orders-history" activeStyle={{ color: "#2b2b2b" }}>
+          Orders History
         </NavLink>
       </li>
       {logIn !== true ? (
