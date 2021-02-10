@@ -120,7 +120,8 @@ const Cart = () => {
                   </p>
                   <p>
                     <strong>
-                      total price: {Math.round(value.price * 0.8 * 100) / 100}{" "}
+                      total price:{" "}
+                      {Math.round((value.price * 0.8 * 100) / 100).toFixed(2)}{" "}
                       RSD
                     </strong>
                   </p>
