@@ -21,7 +21,7 @@ const Main = () => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="md" className={classes.root}>
+    <Container component="main" maxWidth="lg" className={classes.root}>
       <Switch>
         <Route path="/home" exact component={PizzaBuilder} />
         <Redirect from="/" exact to="/home" />

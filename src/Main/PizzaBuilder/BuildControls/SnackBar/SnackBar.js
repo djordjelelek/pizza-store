@@ -43,13 +43,19 @@ export default function SimpleSnackbar(props) {
           ":" +
           seconds,
       };
-
       axios.post(
         "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json?auth=" +
           token,
         finalRecipe
       );
     }
+    const ingidentsUpdate = { ...props.ingredients };
+    for (const value in ingidentsUpdate) {
+      ingidentsUpdate[value].show = false;
+    }
+
+    // ingidentsUpdate.map((ingr) => (ingr.show = false));
+    props.setIngredients({ ...ingidentsUpdate });
   };
 
   const handleClose = (event, reason) => {

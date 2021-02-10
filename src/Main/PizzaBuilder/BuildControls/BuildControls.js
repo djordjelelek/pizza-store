@@ -86,7 +86,11 @@ const BuildControls = (props) => {
       >
         Order
       </Button> */}
-      <SnackBar price={price} ingredients={props.ingredients} />
+      <SnackBar
+        price={price}
+        ingredients={props.ingredients}
+        setIngredients={props.setIngredients}
+      />
     </Container>
   );
 };

@@ -62,17 +62,13 @@ const PizzaBuilder = () => {
     <Container className={classes.root}>
       <Grid container spacing={1}>
         <Grid item lg={8}>
-          <Paper className={classes.paper1}>
-            <Pizza ingredients={ingridientsTrue} />
-          </Paper>
+          <Pizza ingredients={ingridientsTrue} />
         </Grid>
         <Grid item lg={4}>
-          <Paper className={classes.paper2}>
-            <BuildControls
-              ingredients={ingredients}
-              setIngredients={setIngredients}
-            />
-          </Paper>
+          <BuildControls
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+          />
         </Grid>
       </Grid>
     </Container>

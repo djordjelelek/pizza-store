@@ -4,30 +4,73 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import { useAuth } from "../../AuthContext/AuthContext";
+import Container from "@material-ui/core/Container";
+import Reciept from "./Receipt/Receipt";
 
 const useStyles = makeStyles((theme) => ({
+  Container: {
+    marginLeft: "auto",
+  },
   root: {
     flexGrow: 1,
   },
+  Header: {
+    fontSize: "43px",
+    marginTop: "-5px",
+  },
   paper: {
-    height: 250,
-    width: 400,
+    position: "relative",
+    textAlign: "center",
+    height: "310px",
+    width: "370px",
     color: "#898989",
-    paddingTop: "0px",
-    paddingBottom: "15px",
+    paddingBottom: "2px",
   },
   control: {
     padding: theme.spacing(2),
+  },
+  MuiButton: {
+    position: "absolute",
+    marginLeft: "-40px",
+    bootom: 0,
+    backgroundColor: "red",
   },
 }));
 
 const Cart = () => {
   const classes = useStyles();
   const [ordersList, setOrdersList] = useState([]);
+  const [keys, setKeys] = useState([]);
+  const [openReceipt, setOpenReceipt] = React.useState(false);
   const { token } = useAuth();
   const { logIn } = useAuth();
   const { userId } = useAuth();
+
+  const handleClickOpen = () => {
+    setOpenReceipt(true);
+  };
+
+  const handleClose = () => {
+    setOpenReceipt(false);
+  };
+
+  const deleteOrder = (value, index) => {
+    // console.log(value);
+    const ordersListCopy = [...ordersList];
+    ordersListCopy.splice(index, 1);
+    setOrdersList(ordersListCopy);
+    axios.delete(
+      "https://pizza-app-rg-default-rtdb.firebaseio.com/carts/" +
+        keys[index] +
+        ".json?auth=" +
+        token
+    );
+    const keysCopy = [...keys];
+    keysCopy.splice(index, 1);
+    setKeys(keysCopy);
+  };
 
   useEffect(() => {
     const getOrders = () => {
@@ -42,21 +85,29 @@ const Cart = () => {
         )
         .then((response) => {
           setOrdersList(Object.values(response.data));
+          setKeys(Object.keys(response.data));
         });
     };
     getOrders();
   }, []);
 
   return logIn && ordersList.length > 0 ? (
-    <div className={classesCSS.Orders}>
-      <h1 className={classesCSS.Header}>ORDERS</h1>
+    <Container className={classes.Container}>
+      {openReceipt ? (
+        <Reciept
+          openReceipt={openReceipt}
+          handleClose={handleClose}
+          ordersList={ordersList}
+        />
+      ) : null}
+      <h1 className={classes.Header}>CART</h1>
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={4}>
             {ordersList.map((value, index) => (
               <Grid key={index} item>
                 <Paper className={classes.paper}>
-                  <h1>Order</h1>
+                  <h1>Pizza</h1>
                   <p>
                     <strong>ingridents</strong>:
                     {value.recipe.map((ingr) => ingr + ", ")}
@@ -74,13 +125,29 @@ const Cart = () => {
                     </strong>
                   </p>
                   <p>{value.date}</p>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.MuiButton}
+                    onClick={(event) => deleteOrder(value, index)}
+                  >
+                    Delete
+                  </Button>
                 </Paper>
               </Grid>
             ))}
           </Grid>
         </Grid>
       </Grid>
-    </div>
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.MuiButton2}
+        onClick={handleClickOpen}
+      >
+        Buy
+      </Button>
+    </Container>
   ) : logIn ? (
     <div>
       <h1 className={classesCSS.NoOrders}>
