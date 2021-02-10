@@ -45,7 +45,7 @@ export default function SimpleSnackbar(props) {
       };
 
       axios.post(
-        "https://pizza-app-rg-default-rtdb.firebaseio.com/cart.json?auth=" +
+        "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json?auth=" +
           token,
         finalRecipe
       );
