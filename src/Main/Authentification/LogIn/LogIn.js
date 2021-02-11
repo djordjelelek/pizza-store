@@ -49,10 +49,10 @@ export default function LogIn() {
         localStorage.setItem("token", resp.data.idToken);
         localStorage.setItem("userId", resp.data.localId);
 
-        setLogIn(true);
         setTimeout(() => {
+          setLogIn(true);
           history.push("/home");
-        }, 1000);
+        }, 300);
       })
       .catch((err) => {
         setAlertText("Wrong email or password");

@@ -22,25 +22,27 @@ const Main = () => {
 
   return (
     <Container component="main" maxWidth="lg" className={classes.root}>
-      <Switch>
-        <Route path="/home" exact component={PizzaBuilder} />
-        <Redirect from="/" exact to="/home" />
-        <Route path="/cart" component={Cart} />
-        <Route path="/orders-history" component={OrdersHistory} />
-        {logIn ? (
-          <>
-            <Redirect from="/signup" to="/home" />
-            <Redirect from="/login" to="/home" />
-            <Redirect from="/reset-password" to="/home" />
-          </>
-        ) : (
-          <>
-            <Route path="/signup" component={SignUp} />
-            <Route path="/login" component={LogIn} />
-            <Route path="/reset-password" component={ResetPassword} />
-          </>
-        )}
-      </Switch>
+      {logIn ? (
+        <Switch>
+          <Route path="/home" component={PizzaBuilder} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/orders-history" component={OrdersHistory} />
+          <Redirect from="/" exact to="/home" />
+          <Redirect from="/signup" to="/home" />
+          <Redirect from="/login" to="/home" />
+          <Redirect from="/reset-password" to="/home" />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route path="/signup" component={SignUp} />
+          <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/login" component={LogIn} />
+          <Redirect from="/" exact to="/login" />
+          <Redirect from="/home" to="/login" />
+          <Redirect from="/cart" to="/login" />
+          <Redirect from="/orders-history" to="/login" />
+        </Switch>
+      )}
     </Container>
   );
 };
