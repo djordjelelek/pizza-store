@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import classesCSS from "./Cart.module.css";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
+import {
+  Grid,
+  CircularProgress,
+  Paper,
+  Button,
+  Container,
+} from "@material-ui/core";
 import { useAuth } from "../../AuthContext/AuthContext";
-import Container from "@material-ui/core/Container";
 import Reciept from "./Receipt/Receipt";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +46,7 @@ const Cart = () => {
   const classes = useStyles();
   const [ordersList, setOrdersList] = useState([]);
   const [keys, setKeys] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [openReceipt, setOpenReceipt] = React.useState(false);
   const { token } = useAuth();
   const { logIn } = useAuth();
@@ -84,6 +88,7 @@ const Cart = () => {
             '"'
         )
         .then((response) => {
+          setLoading(false);
           setOrdersList(Object.values(response.data));
           setKeys(Object.keys(response.data));
         });
@@ -92,63 +97,74 @@ const Cart = () => {
   }, []);
 
   return logIn && ordersList.length > 0 ? (
-    <Container className={classes.Container}>
-      {openReceipt ? (
-        <Reciept
-          openReceipt={openReceipt}
-          handleClose={handleClose}
-          ordersList={ordersList}
-        />
-      ) : null}
-      <h1 className={classes.Header}>CART</h1>
-      <Grid container className={classes.root} spacing={2}>
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={4}>
-            {ordersList.map((value, index) => (
-              <Grid key={index} item>
-                <Paper className={classes.paper}>
-                  <h1>Pizza</h1>
-                  <p>
-                    <strong>ingridents</strong>:
-                    {value.recipe.map((ingr) => ingr + ", ")}
-                  </p>
-                  <p>
-                    <strong>price</strong>: {value.price} RSD
-                  </p>
-                  <p>
-                    <strong>discount</strong>: 20%
-                  </p>
-                  <p>
-                    <strong>
-                      total price:{" "}
-                      {Math.round((value.price * 0.8 * 100) / 100).toFixed(2)}{" "}
-                      RSD
-                    </strong>
-                  </p>
-                  <p>{value.date}</p>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.MuiButton}
-                    onClick={(event) => deleteOrder(value, index)}
-                  >
-                    Delete
-                  </Button>
-                </Paper>
-              </Grid>
-            ))}
+    <>
+      {loading ? (
+        <div className={classes.SpinnerContainer}>
+          <CircularProgress className={classes.Spinner} />
+        </div>
+      ) : (
+        false
+      )}
+      <Container className={classes.Container}>
+        {openReceipt ? (
+          <Reciept
+            openReceipt={openReceipt}
+            handleClose={handleClose}
+            ordersList={ordersList}
+            keys={keys}
+            setOrdersList={setOrdersList}
+          />
+        ) : null}
+        <h1 className={classes.Header}>CART</h1>
+        <Grid container className={classes.root} spacing={2}>
+          <Grid item xs={12}>
+            <Grid container justify="center" spacing={4}>
+              {ordersList.map((value, index) => (
+                <Grid key={index} item>
+                  <Paper className={classes.paper}>
+                    <h1>Pizza</h1>
+                    <p>
+                      <strong>ingridents</strong>:
+                      {value.recipe.map((ingr) => ingr + ", ")}
+                    </p>
+                    <p>
+                      <strong>price</strong>: {value.price} RSD
+                    </p>
+                    <p>
+                      <strong>discount</strong>: 20%
+                    </p>
+                    <p>
+                      <strong>
+                        total price:{" "}
+                        {Math.round((value.price * 0.8 * 100) / 100).toFixed(2)}{" "}
+                        RSD
+                      </strong>
+                    </p>
+                    <p>{value.date}</p>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      className={classes.MuiButton}
+                      onClick={(event) => deleteOrder(value, index)}
+                    >
+                      Delete
+                    </Button>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.MuiButton2}
-        onClick={handleClickOpen}
-      >
-        Buy
-      </Button>
-    </Container>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.MuiButton2}
+          onClick={handleClickOpen}
+        >
+          Buy
+        </Button>
+      </Container>
+    </>
   ) : logIn ? (
     <div>
       <h1 className={classesCSS.NoOrders}>

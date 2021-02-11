@@ -50,7 +50,9 @@ export default function LogIn() {
         localStorage.setItem("userId", resp.data.localId);
 
         setLogIn(true);
-        history.push("/home");
+        setTimeout(() => {
+          history.push("/home");
+        }, 1000);
       })
       .catch((err) => {
         setAlertText("Wrong email or password");

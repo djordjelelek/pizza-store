@@ -22,11 +22,13 @@ const MenuItems = () => {
           Cart
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/orders-history" activeStyle={{ color: "#2b2b2b" }}>
-          Orders History
-        </NavLink>
-      </li>
+      {logIn ? (
+        <li>
+          <NavLink to="/orders-history" activeStyle={{ color: "#2b2b2b" }}>
+            Orders History
+          </NavLink>
+        </li>
+      ) : null}
       {logIn !== true ? (
         <li className={classes.LogIn}>
           <NavLink

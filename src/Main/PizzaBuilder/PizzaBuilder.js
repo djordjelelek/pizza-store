@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import Pizza from "./Pizza/Pizza";
 import BuildControls from "./BuildControls/BuildControls";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import { Container, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   // root: {
@@ -37,6 +33,21 @@ const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(2),
   },
+  SpinnerContainer: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backdropFilter: "blur(2px)",
+    zIndex: 1,
+  },
+  Spinner: {
+    marginTop: "180px",
+    color: "#4caf50",
+  },
 }));
 
 const PizzaBuilder = () => {
@@ -59,19 +70,21 @@ const PizzaBuilder = () => {
   );
 
   return (
-    <Container className={classes.root}>
-      <Grid container spacing={1}>
-        <Grid item lg={8}>
-          <Pizza ingredients={ingridientsTrue} />
+    <>
+      <Container className={classes.root}>
+        <Grid container spacing={1}>
+          <Grid item lg={8}>
+            <Pizza ingredients={ingridientsTrue} />
+          </Grid>
+          <Grid item lg={4}>
+            <BuildControls
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+            />
+          </Grid>
         </Grid>
-        <Grid item lg={4}>
-          <BuildControls
-            ingredients={ingredients}
-            setIngredients={setIngredients}
-          />
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </>
   );
 };
 

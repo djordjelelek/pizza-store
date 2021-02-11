@@ -11,11 +11,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    height: 250,
+    height: "auto",
     width: 400,
     color: "#898989",
     paddingTop: "0px",
     paddingBottom: "15px",
+    // textAlign: "justify"
   },
   control: {
     padding: theme.spacing(2),
@@ -49,7 +50,7 @@ const Orders = () => {
 
   return logIn && ordersList.length > 0 ? (
     <div className={classesCSS.Orders}>
-      <h1 className={classesCSS.Header}>ORDERS</h1>
+      <h1 className={classesCSS.Header}>ORDERS HISTORY</h1>
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={4}>
@@ -57,20 +58,23 @@ const Orders = () => {
               <Grid key={index} item>
                 <Paper className={classes.paper}>
                   <h1>Order</h1>
-                  <p>
-                    <strong>ingridents</strong>:
-                    {value.recipe.map((ingr) => ingr + ", ")}
-                  </p>
-                  <p>
+                  <ol>
+                    {value.pizza.map((pizza, index) => (
+                      <li key={index}>
+                        <strong>pizza</strong>:
+                        {pizza[0].map((ingr) => ingr + ", ")}
+                        {pizza[1]}
+                        <br />
+                      </li>
+                    ))}
+                  </ol>
+                  {/* <p>
                     <strong>price</strong>: {value.price} RSD
-                  </p>
-                  <p>
-                    <strong>discount</strong>: 20%
-                  </p>
+                  </p> */}
                   <p>
                     <strong>
-                      total price: {Math.round(value.price * 0.8 * 100) / 100}{" "}
-                      RSD
+                      total price:&nbsp;
+                      {value.finalPrice} RSD
                     </strong>
                   </p>
                   <p>{value.date}</p>
