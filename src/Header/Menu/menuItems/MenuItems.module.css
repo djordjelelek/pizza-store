@@ -16,7 +16,8 @@
     color: rgb(255, 71, 71);
 }
 
-.SpinnerContainer {
+
+/* .SpinnerContainer {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -29,8 +30,26 @@
 
 .Spinner {
     margin-left: -50px;
+} */
+
+.SpinnerContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(2px);
+    z-index: 1;
 }
 
+.Spinner {
+    margin-top: 312px;
+    color: #4caf50;
+}
+
+,
 .root {
     size: 100
 }

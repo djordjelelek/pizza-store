@@ -37,9 +37,9 @@ const Main = () => {
           <Route path="/signup" component={SignUp} />
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/login" component={LogIn} />
-          <Redirect from="/" exact to="/login" />
-          <Redirect from="/home" to="/login" />
-          <Redirect from="/cart" to="/login" />
+          <Route path="/home" component={PizzaBuilder} />
+          <Redirect from="/" exact to="/home" />
+          <Route path="/cart" component={Cart} />
           <Redirect from="/orders-history" to="/login" />
         </Switch>
       )}

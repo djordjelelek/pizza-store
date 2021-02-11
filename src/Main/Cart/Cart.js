@@ -40,6 +40,21 @@ const useStyles = makeStyles((theme) => ({
     bootom: 0,
     backgroundColor: "red",
   },
+  SpinnerContainer: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backdropFilter: "blur(2px)",
+    zIndex: 1,
+  },
+  Spinner: {
+    marginTop: "312px",
+    color: "#4caf50",
+  },
 }));
 
 const Cart = () => {
@@ -88,23 +103,20 @@ const Cart = () => {
             '"'
         )
         .then((response) => {
-          setLoading(false);
           setOrdersList(Object.values(response.data));
           setKeys(Object.keys(response.data));
+          setLoading(false);
         });
     };
     getOrders();
   }, []);
 
-  return logIn && ordersList.length > 0 ? (
-    <>
-      {loading ? (
-        <div className={classes.SpinnerContainer}>
-          <CircularProgress className={classes.Spinner} />
-        </div>
-      ) : (
-        false
-      )}
+  return logIn ? (
+    loading ? (
+      <div className={classes.SpinnerContainer}>
+        <CircularProgress className={classes.Spinner} />
+      </div>
+    ) : ordersList.length > 0 ? (
       <Container className={classes.Container}>
         {openReceipt ? (
           <Reciept
@@ -113,6 +125,7 @@ const Cart = () => {
             ordersList={ordersList}
             keys={keys}
             setOrdersList={setOrdersList}
+            setLoading={setLoading}
           />
         ) : null}
         <h1 className={classes.Header}>CART</h1>
@@ -164,18 +177,18 @@ const Cart = () => {
           Buy
         </Button>
       </Container>
-    </>
-  ) : logIn ? (
-    <div>
-      <h1 className={classesCSS.NoOrders}>
-        There is no order yet <br /> With every online order you gain 20% off
-        <br />
-        Make order{" "}
-        <a href="/home" className={classesCSS.Link}>
-          now
-        </a>
-      </h1>
-    </div>
+    ) : (
+      <div>
+        <h1 className={classesCSS.NoOrders}>
+          The cart is empty <br /> With every online order you gain 20% off
+          <br />
+          Make order{" "}
+          <a href="/home" className={classesCSS.Link}>
+            now
+          </a>
+        </h1>
+      </div>
+    )
   ) : (
     <div>
       <h1 className={classesCSS.NoOrders}>

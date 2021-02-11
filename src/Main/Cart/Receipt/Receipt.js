@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Paper from "@material-ui/core/Paper";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemText,
+  CircularProgress,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,11 +41,28 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "end",
     // marginTop: "-45px",
   },
+  SpinnerContainer: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backdropFilter: "blur(2px)",
+    zIndex: 1,
+  },
+  Spinner: {
+    marginTop: "312px",
+    color: "#4caf50",
+  },
 }));
 function Receipt(props) {
+  const [loading, setLoading] = useState(false);
   const classes = useStyles();
   const { token } = useAuth();
   const { userId } = useAuth();
+  const history = useHistory();
 
   const day = new Date().getDay();
   const mounth = new Date().getDate() - 1;
@@ -67,21 +84,6 @@ function Receipt(props) {
     ":" +
     seconds;
 
-  const finalReciept = props.ordersList.map((el, index) => (
-    <div className={classes.ContainerElement} key={index}>
-      <div className={classes.Ingridients}>
-        <p>
-          <strong>ingridents: </strong>
-          {`${el.recipe.map((el) => " " + el)}`}
-        </p>
-      </div>
-      <p>
-        <div className={classes.Price}>
-          {`${Math.round((el.price * 0.8 * 100) / 100).toFixed(2)}`} RSD
-        </div>
-      </p>
-    </div>
-  ));
   const finalPrice = Math.round(
     props.ordersList
       .map((el) => (el.price * 0.8 * 100) / 100)
@@ -89,6 +91,10 @@ function Receipt(props) {
   ).toFixed(2);
 
   const createOrder = () => {
+    props.setLoading(true);
+    setTimeout(() => {
+      history.push("/home");
+    }, 300);
     const pizzas = props.ordersList.map((el) => [
       el.recipe,
       Math.round((el.price * 0.8 * 100) / 100).toFixed(2),
@@ -99,20 +105,12 @@ function Receipt(props) {
       finalPrice: finalPrice,
       date: date,
     };
-    axios
-      .post(
-        "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json?auth=" +
-          token,
-        order
-      )
-      .then(() => {
-        // setLoading(true);
-        // setTimeout(() => {
-        //   history.push("/cart");
-        // }, 2000);
-        // axios.delet
-      });
-    const deleteCart = props.keys.map((key, index) =>
+    axios.post(
+      "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json?auth=" +
+        token,
+      order
+    );
+    const deleteCarts = props.keys.map((key, index) =>
       axios.delete(
         "https://pizza-app-rg-default-rtdb.firebaseio.com/carts/" +
           key +
@@ -120,13 +118,7 @@ function Receipt(props) {
           token
       )
     );
-    // axios.delete(
-    //   "https://pizza-app-rg-default-rtdb.firebaseio.com/carts/" +
-    //     props.keys[0] +
-    //     ".json?auth=" +
-    //     token
-    // );
-    axios.all(deleteCart);
+    axios.all(deleteCarts);
     props.setOrdersList([]);
   };
 
