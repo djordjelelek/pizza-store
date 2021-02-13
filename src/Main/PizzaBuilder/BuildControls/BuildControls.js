@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // flexGrow: 1,
     // textAlign: "center",
-    backgroundColor: "red",
+    backgroundColor: "#ffffff00",
     position: "relative",
     margin: "0px",
     marginBottom: "0px",
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "40px",
     paddingRight: "40px",
     paddingBottom: "5px",
+  },
+  Header: {
+    fontSize: "20px",
   },
 }));
 

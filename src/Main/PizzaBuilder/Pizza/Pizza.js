@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // flexGrow: 1,
     // textAlign: "center",
-    backgroundColor: "red",
+    backgroundColor: "rgba(115, 41, 18, 0.4)",
     margin: "auto",
     top: "50%",
     bottom: "50%",

@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     paddingTop: "8px",
     marginTop: "auto",
-    backgroundColor: "white",
+    backgroundColor: "#ffdb80",
   },
   Icons: {
     marginBottom: "-10px",
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   Owner: {
     fontSize: "12px",
     marginBottom: "6px",
-    color: "rgba(0, 0, 0, 0.54)",
+    color: "#fff",
   },
   LinedIn: {
     marginRight: "3px",
@@ -24,35 +24,13 @@ const useStyles = makeStyles((theme) => ({
   GitHub: {
     marginLeft: "3px",
   },
+  MuiIcon: {
+    color: "#fff",
+  },
 }));
 
 const Footer = () => {
   const classes = useStyles();
-  const a = (
-    <footer className={classes.Footer}>
-      <div className={classes.Container}>
-        <div className={classes.Icons}>
-          <a
-            href="https://www.linkedin.com/in/djordje-lelek-3580b7193/"
-            rel="noopener noreferrer"
-            target="_blank"
-            className={classes.LinedIn}
-          >
-            <LinkedInIcon fontSize="default" color="action" />
-          </a>
-          <a
-            href="https://github.com/djordjelelek"
-            className={classes.GitHub}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <GitHubIcon fontSize="default" color="action" />
-          </a>
-        </div>
-        <p className={classes.Owner}>Created by: Djordje Lelek</p>
-      </div>
-    </footer>
-  );
 
   return (
     <footer className={classes.footer}>
@@ -64,7 +42,7 @@ const Footer = () => {
             target="_blank"
             className={classes.LinedIn}
           >
-            <LinkedInIcon fontSize="default" color="action" />
+            <LinkedInIcon fontSize="default" style={{ color: "#fff" }} />
           </a>
           <a
             href="https://github.com/djordjelelek"
@@ -72,7 +50,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <GitHubIcon fontSize="default" color="action" />
+            <GitHubIcon fontSize="default" style={{ color: "#fff" }} />
           </a>
         </div>
         <p className={classes.Owner}>Created by: Djordje Lelek</p>

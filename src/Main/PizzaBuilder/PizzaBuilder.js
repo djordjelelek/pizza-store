@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     // textAlign: "center",
-    backgroundColor: "blue",
+    backgroundColor: "#ffffff00",
     padding: "20px",
   },
   paper: {
@@ -73,7 +73,7 @@ const PizzaBuilder = () => {
     <>
       <Container className={classes.root}>
         <Grid container spacing={1}>
-          <Grid item lg={8}>
+          <Grid item>
             <Pizza ingredients={ingridientsTrue} />
           </Grid>
           <Grid item lg={4}>

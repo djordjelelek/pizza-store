@@ -24,19 +24,26 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-5px",
   },
   paper: {
+    backgroundColor: "rgba(255, 219, 128, 0.6)",
     position: "relative",
-    textAlign: "center",
-    height: "310px",
+    textAlign: "left",
+    margin: "5px",
+    marginBottom: "-12px",
+    height: "auto",
     width: "370px",
-    color: "#898989",
+    color: "darkslategray",
     paddingBottom: "2px",
+    paddingLeft: "10px",
+    paddingTop: "0px",
+    boxShadow: "4px 4px 15px  grey",
+    borderRadius: "6px",
   },
   control: {
     padding: theme.spacing(2),
   },
   MuiButton: {
-    position: "absolute",
-    marginLeft: "-40px",
+    // position: "absolute",
+    textAlign: "center",
     bootom: 0,
     backgroundColor: "red",
   },
@@ -137,30 +144,27 @@ const Cart = () => {
                   <Paper className={classes.paper}>
                     <h1>Pizza</h1>
                     <p>
-                      <strong>ingridents</strong>:
-                      {value.recipe.map((ingr) => ingr + ", ")}
+                      Ingredients: {value.recipe.map((ingr) => ingr + ", ")}
                     </p>
-                    <p>
-                      <strong>price</strong>: {value.price} RSD
-                    </p>
-                    <p>
-                      <strong>discount</strong>: 20%
-                    </p>
+                    <p>{value.date}</p>
+                    <p>Price: {value.price}.00 RSD, Discount: 20%</p>
                     <p>
                       <strong>
-                        total price:{" "}
-                        {Math.round((value.price * 0.8 * 100) / 100).toFixed(2)}{" "}
+                        <br />
+                        Final Price:{" "}
+                        {Math.round((value.price * 0.8 * 100) / 100).toFixed(
+                          2
+                        )}{" "}
                         RSD
                       </strong>
                     </p>
-                    <p>{value.date}</p>
                     <Button
                       variant="contained"
                       color="secondary"
                       className={classes.MuiButton}
                       onClick={(event) => deleteOrder(value, index)}
                     >
-                      Delete
+                      Remove
                     </Button>
                   </Paper>
                 </Grid>
@@ -182,7 +186,7 @@ const Cart = () => {
         <h1 className={classesCSS.NoOrders}>
           The cart is empty <br /> With every online order you gain 20% off
           <br />
-          Make order{" "}
+          Make order
           <a href="/home" className={classesCSS.Link}>
             now
           </a>
@@ -192,16 +196,17 @@ const Cart = () => {
   ) : (
     <div>
       <h1 className={classesCSS.NoOrders}>
-        You are not signed in
+        You are not logged in
         <br /> Please{" "}
         <a href="/login" className={classesCSS.Link}>
-          LogIn
+          Log In
         </a>{" "}
         or{" "}
         <a href="/signup" className={classesCSS.Link}>
-          SignUp
-        </a>{" "}
-        for 20% discount on each order
+          Sign Up&nbsp;
+        </a>
+        for <br />
+        20% discount
       </h1>
     </div>
   );

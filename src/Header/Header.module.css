@@ -1,8 +1,8 @@
 .Header {
     height: 60px;
     width: 100%;
-    background-color: #ffffff;
-    color: #898989;
+    background-color: #ffdb80;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;

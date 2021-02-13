@@ -4,9 +4,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "white",
     boxShadow: "4px 4px 15px  grey",
+    borderRadius: "6px",
     paddingTop: "8px",
     marginTop: "65px",
-    borderRadius: "6px",
     zIndex: "11",
   },
   paper: {

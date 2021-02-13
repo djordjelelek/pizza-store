@@ -1,4 +1,4 @@
-.LogIn {
+/* .LogIn {
     padding-left: 50px;
     font-size: 15px;
 }
@@ -13,24 +13,18 @@
     border: none;
     background-color: white;
     font-size: 15px;
-    color: rgb(255, 71, 71);
-}
-
-
-/* .SpinnerContainer {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    text-align: end;
-    padding-left: 30px;
-}
-
-.Spinner {
-    margin-left: -50px;
+    color: #2b2b2b
 } */
+
+.Element {
+    font-size: 18px;
+    padding-left: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.NavLink {
+    color: white;
+}
 
 .SpinnerContainer {
     position: absolute;
@@ -47,9 +41,4 @@
 .Spinner {
     margin-top: 312px;
     color: #4caf50;
-}
-
-,
-.root {
-    size: 100
 }

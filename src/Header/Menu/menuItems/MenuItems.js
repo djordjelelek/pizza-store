@@ -12,31 +12,25 @@ const MenuItems = () => {
   const { setUserId } = useAuth();
   return (
     <>
-      <li>
-        <NavLink to="/home" activeStyle={{ color: "#2b2b2b" }}>
-          Pizza Builder
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/cart" activeStyle={{ color: "#2b2b2b" }}>
-          Cart
-        </NavLink>
-      </li>
       {logIn ? (
-        <li>
-          <NavLink to="/orders-history" activeStyle={{ color: "#2b2b2b" }}>
+        <li className={classes.Element}>
+          <NavLink
+            to="/orders-history"
+            activeStyle={{ color: "#2b2b2b" }}
+            className={classes.NavLink}
+          >
             Orders History
           </NavLink>
         </li>
       ) : null}
       {logIn !== true ? (
-        <li className={classes.LogIn}>
+        <li className={classes.Element}>
           <NavLink
             to="/login"
-            activeStyle={{ color: "#007806" }}
-            style={{ color: "#04d90f" }}
+            activeStyle={{ color: "black" }}
+            className={classes.NavLink}
           >
-            <strong>Log In</strong>
+            Log In
           </NavLink>
         </li>
       ) : (
@@ -59,6 +53,17 @@ const MenuItems = () => {
           </button>
         </li>
       )}
+      <li className={classes.Element}>
+        <NavLink to="/home" activeStyle={{ color: "#2b2b2b" }}>
+          Pizza Builder
+        </NavLink>
+      </li>
+      <li className={classes.Element}>
+        <NavLink to="/cart" activeStyle={{ color: "#2b2b2b" }}>
+          Cart
+        </NavLink>
+      </li>
+
       {loading ? (
         <>
           <div className={classes.SpinnerContainer}></div>
