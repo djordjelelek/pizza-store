@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     paddingTop: "8px",
     marginTop: "auto",
-    backgroundColor: "#ffdb80",
+    backgroundColor: "#ffd380",
   },
   Icons: {
     marginBottom: "-10px",

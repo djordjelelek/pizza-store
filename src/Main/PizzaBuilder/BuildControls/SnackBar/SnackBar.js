@@ -5,12 +5,29 @@ import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+const useStyles = makeStyles((theme) => ({
+  snackbar: {
+    backgroundColor: "white",
+    color: "darkslategray",
+  },
+  Link: {
+    textDecoration: "none",
+    color: "rgb(73, 134, 231)",
+  },
+}));
 
 export default function SimpleSnackbar(props) {
   const [open, setOpen] = React.useState(false);
   const { token } = useAuth();
   const { userId } = useAuth();
   const { logIn } = useAuth();
+  const classes = useStyles();
 
   const listItems = Object.keys(props.ingredients).filter(
     (el) => props.ingredients[el].show
@@ -84,25 +101,39 @@ export default function SimpleSnackbar(props) {
           horizontal: "left",
         }}
         open={open}
+        color="primary"
         autoHideDuration={6000}
         onClose={handleClose}
-        message={logIn ? "Add to Cart" : <a href="/login">LogIn</a>}
         action={
           <React.Fragment>
-            {/* <Button color="secondary" size="small" onClick={handleClose}>
-              UNDO
-            </Button> */}
             <IconButton
               size="small"
               aria-label="close"
-              color="inherit"
+              color="black"
               onClick={handleClose}
             >
               <CloseIcon fontSize="small" />
             </IconButton>
           </React.Fragment>
         }
-      />
+      >
+        {logIn ? (
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            className={classes.snackbar}
+          >
+            Added to Cart
+          </Alert>
+        ) : (
+          <Alert severity="info" className={classes.snackbar}>
+            Please{" "}
+            <a href="/login" className={classes.Link}>
+              Log In
+            </a>
+          </Alert>
+        )}
+      </Snackbar>
     </div>
   );
 }

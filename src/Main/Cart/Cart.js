@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import classesCSS from "./Cart.module.css";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-5px",
   },
   paper: {
-    backgroundColor: "rgba(255, 219, 128, 0.6)",
+    backgroundColor: "rgba(255, 211, 128, 0.4)",
     position: "relative",
     textAlign: "left",
     margin: "5px",
@@ -46,6 +45,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     bootom: 0,
     backgroundColor: "red",
+  },
+  NoOrders: {
+    color: "rgb(255, 255, 255)",
+    padding: "70px",
+  },
+  Link: {
+    textDecoration: "none",
+    color: "rgb(73, 134, 231)",
   },
   SpinnerContainer: {
     position: "absolute",
@@ -183,11 +190,11 @@ const Cart = () => {
       </Container>
     ) : (
       <div>
-        <h1 className={classesCSS.NoOrders}>
+        <h1 className={classes.NoOrders}>
           The cart is empty <br /> With every online order you gain 20% off
           <br />
-          Make order
-          <a href="/home" className={classesCSS.Link}>
+          Make order{" "}
+          <a href="/home" className={classes.Link}>
             now
           </a>
         </h1>
@@ -195,14 +202,14 @@ const Cart = () => {
     )
   ) : (
     <div>
-      <h1 className={classesCSS.NoOrders}>
+      <h1 className={classes.NoOrders}>
         You are not logged in
         <br /> Please{" "}
-        <a href="/login" className={classesCSS.Link}>
+        <a href="/login" className={classes.Link}>
           Log In
         </a>{" "}
         or{" "}
-        <a href="/signup" className={classesCSS.Link}>
+        <a href="/signup" className={classes.Link}>
           Sign Up&nbsp;
         </a>
         for <br />

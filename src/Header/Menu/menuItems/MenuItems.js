@@ -12,17 +12,6 @@ const MenuItems = () => {
   const { setUserId } = useAuth();
   return (
     <>
-      {logIn ? (
-        <li className={classes.Element}>
-          <NavLink
-            to="/orders-history"
-            activeStyle={{ color: "#2b2b2b" }}
-            className={classes.NavLink}
-          >
-            Orders History
-          </NavLink>
-        </li>
-      ) : null}
       {logIn !== true ? (
         <li className={classes.Element}>
           <NavLink
@@ -34,25 +23,38 @@ const MenuItems = () => {
           </NavLink>
         </li>
       ) : (
-        <li className={classes.liEl}>
-          <button
-            className={classes.LogOut}
+        <li className={classes.Element}>
+          <NavLink
+            to="/home"
+            activeStyle={{ color: "black" }}
+            className={classes.NavLink}
             onClick={() => {
               setLoading(true);
               setTimeout(() => {
                 setLogIn(false);
                 setToken("");
                 setUserId("");
-                localStorage.removeItem("token");
-                localStorage.removeItem("userId");
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("userId");
                 window.location.reload();
               }, 2000);
             }}
           >
-            <strong>Log Out</strong>
-          </button>
+            Log Out
+          </NavLink>
         </li>
       )}
+      {logIn ? (
+        <li className={classes.Element}>
+          <NavLink
+            to="/orders-history"
+            activeStyle={{ color: "#2b2b2b" }}
+            className={classes.NavLink}
+          >
+            Orders History
+          </NavLink>
+        </li>
+      ) : null}
       <li className={classes.Element}>
         <NavLink to="/home" activeStyle={{ color: "#2b2b2b" }}>
           Pizza Builder
