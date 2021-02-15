@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   Owner: {
     fontSize: "12px",
     marginBottom: "6px",
-    color: "#fff",
+    color: "darkslategray",
   },
   LinedIn: {
     marginRight: "3px",
@@ -42,7 +42,10 @@ const Footer = () => {
             target="_blank"
             className={classes.LinedIn}
           >
-            <LinkedInIcon fontSize="default" style={{ color: "#fff" }} />
+            <LinkedInIcon
+              fontSize="default"
+              style={{ color: "darkslategray" }}
+            />
           </a>
           <a
             href="https://github.com/djordjelelek"
@@ -50,7 +53,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <GitHubIcon fontSize="default" style={{ color: "#fff" }} />
+            <GitHubIcon fontSize="default" style={{ color: "darkslategray" }} />
           </a>
         </div>
         <p className={classes.Owner}>Created by: Djordje Lelek</p>

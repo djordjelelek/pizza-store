@@ -1,14 +1,11 @@
-import React, { useState } from "react";
 import axios from "axios";
 import {
   Button,
   Dialog,
-  DialogActions,
   DialogTitle,
   List,
   ListItem,
   ListItemText,
-  CircularProgress,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
@@ -17,10 +14,8 @@ import { useAuth } from "../../../AuthContext/AuthContext";
 const useStyles = makeStyles((theme) => ({
   Header: {
     textAlign: "center",
-  },
-  Text: {
-    // backgroundColor: "red",
-    // maxWidth: "80%",
+    marginTop: "-8px",
+    marginBottom: "-20px",
   },
   ContainerElement: {
     textAlign: "center",
@@ -28,18 +23,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   Ingridients: {
-    // fontSize: "15px",
-    maxWidth: "80%",
-    // textAlign: "start",
+    maxWidth: "75%",
     textAlign: "justify",
   },
+  List: {
+    width: "100%",
+  },
   Prices: {
-    // fontSize: "15px",
-    // height: "100%",
-    // right: 0,
     top: 0,
     textAlign: "end",
-    // marginTop: "-45px",
   },
   SpinnerContainer: {
     position: "absolute",
@@ -58,31 +50,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Receipt(props) {
-  const [loading, setLoading] = useState(false);
   const classes = useStyles();
   const { token } = useAuth();
   const { userId } = useAuth();
   const history = useHistory();
 
-  const day = new Date().getDay();
-  const mounth = new Date().getDate() - 1;
+  const day = new Date().getDate();
+  const mounth = new Date().getMonth() + 1;
   const year = new Date().getFullYear();
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
-  const seconds = new Date().getMinutes();
-  const date =
-    "Date: " +
-    day +
-    "." +
-    mounth +
-    "." +
-    year +
-    ". Time: " +
-    hours +
-    ":" +
-    minutes +
-    ":" +
-    seconds;
+  const time =
+    day + "." + mounth + "." + year + ". " + hours + ":" + minutes + " h";
 
   const finalPrice = Math.round(
     props.ordersList
@@ -103,7 +82,7 @@ function Receipt(props) {
       userId: userId,
       pizza: pizzas,
       finalPrice: finalPrice,
-      date: date,
+      time: time,
     };
     axios.post(
       "https://pizza-app-rg-default-rtdb.firebaseio.com/orders.json?auth=" +
@@ -131,38 +110,62 @@ function Receipt(props) {
       className={classes.Container}
     >
       <DialogTitle id="alert-dialog-title" className={classes.Header}>
-        {"Final Receipt"}
+        <strong>{"Receipt"}</strong>
       </DialogTitle>
-      <List>
+      <List className={classes.List}>
         {props.ordersList.map((el, index) => (
           <ListItem key={index}>
             <ListItemText className={classes.Ingridients}>
               <strong>ingridents</strong>:&nbsp;
-              {el.recipe.map((el) => el + ", ")}
+              {el.recipe.map((ingr) => {
+                if (
+                  ingr === el.recipe[el.recipe.length - 1] &&
+                  ingr === "beefSauce"
+                )
+                  return "beef sauce";
+                if (ingr === el.recipe[el.recipe.length - 1]) return ingr;
+                if (ingr === "beefSauce") ingr = "beef sauce";
+                return ingr + ", ";
+              })}
             </ListItemText>
             <ListItemText className={classes.Prices}>
-              {el.price} RSD
+              {el.price}.00 RSD
             </ListItemText>
           </ListItem>
         ))}
       </List>
-      <List>
-        <ListItem>
-          <ListItemText>{date}</ListItemText>
-          <ListItemText>
-            {"Final prize: "}
-            {finalPrice}
-          </ListItemText>
-        </ListItem>
+      <List
+        style={{
+          width: "100%",
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "start",
+          // justifyContent: "flex-end",
+        }}
+      >
+        <ListItemText>
+          <strong>Time: </strong>
+          {time}
+        </ListItemText>
+        <ListItemText></ListItemText>
+        <ListItemText>
+          <strong>Final prize: </strong>
+          {finalPrice} RSD
+        </ListItemText>
       </List>
-      <DialogActions>
-        <Button onClick={() => props.handleClose()} color="primary">
+      <div style={{ textAlign: "center" }}>
+        <Button onClick={() => props.handleClose()} style={{ color: "red" }}>
           Disagree
         </Button>
-        <Button onClick={() => createOrder()} color="primary" autoFocus>
+        <Button
+          onClick={() => createOrder()}
+          color="primary"
+          autoFocus
+          style={{ color: "blue" }}
+        >
           Agree
         </Button>
-      </DialogActions>
+      </div>
     </Dialog>
   );
 }

@@ -18,7 +18,7 @@
 }
 
 .List {
-    color: #ffffff;
+    color: darkslategray;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
     height: 100%;
     box-sizing: border-box;
     display: block;
-    color: white;
+    color: darkslategray;
     padding: 16px 10px;
     border-bottom: 4px solid transparent;
 }
@@ -76,7 +76,7 @@
 .Menu a:hover,
 .Menu a:active,
 .Menu a.active {
-    color: #2b2b2b;
+    color: "white";
     text-decoration: none;
 }
 

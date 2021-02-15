@@ -43,3 +43,19 @@
     margin-top: 312px;
     color: #4caf50;
 }
+
+.Cart {
+    color: darkslategray
+}
+
+.Cart:hover {
+    color: white;
+}
+
+.Cart:active {
+    color: white;
+}
+
+.Cart:focus {
+    background-color: yellow;
+}

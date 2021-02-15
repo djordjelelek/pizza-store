@@ -7,32 +7,36 @@ import {
   Paper,
   Button,
   Container,
+  IconButton,
 } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
 import { useAuth } from "../../AuthContext/AuthContext";
 import Reciept from "./Receipt/Receipt";
 
 const useStyles = makeStyles((theme) => ({
   Container: {
     marginLeft: "auto",
+    marginBottom: "42px",
   },
   root: {
     flexGrow: 1,
   },
   Header: {
-    fontSize: "43px",
-    marginTop: "-5px",
+    marginTop: "7px",
+    marginBottom: "14px",
   },
   paper: {
     backgroundColor: "rgba(255, 211, 128, 0.4)",
     position: "relative",
     textAlign: "left",
     margin: "5px",
-    marginBottom: "-12px",
+    marginBottom: "-7px",
     height: "auto",
     width: "370px",
     color: "darkslategray",
-    paddingBottom: "2px",
-    paddingLeft: "10px",
+    paddingBottom: "0.1px",
+    paddingLeft: "17px",
+    paddingRight: "17px",
     paddingTop: "0px",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
@@ -40,11 +44,12 @@ const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(2),
   },
-  MuiButton: {
-    // position: "absolute",
-    textAlign: "center",
-    bootom: 0,
-    backgroundColor: "red",
+  MuiButton2: {
+    backgroundColor: "#8fcc66",
+    "&:hover": {
+      backgroundColor: "#74a653",
+    },
+    marginBottom: "8px",
   },
   NoOrders: {
     color: "rgb(255, 255, 255)",
@@ -143,42 +148,6 @@ const Cart = () => {
           />
         ) : null}
         <h1 className={classes.Header}>CART</h1>
-        <Grid container className={classes.root} spacing={2}>
-          <Grid item xs={12}>
-            <Grid container justify="center" spacing={4}>
-              {ordersList.map((value, index) => (
-                <Grid key={index} item>
-                  <Paper className={classes.paper}>
-                    <h1>Pizza</h1>
-                    <p>
-                      Ingredients: {value.recipe.map((ingr) => ingr + ", ")}
-                    </p>
-                    <p>{value.date}</p>
-                    <p>Price: {value.price}.00 RSD, Discount: 20%</p>
-                    <p>
-                      <strong>
-                        <br />
-                        Final Price:{" "}
-                        {Math.round((value.price * 0.8 * 100) / 100).toFixed(
-                          2
-                        )}{" "}
-                        RSD
-                      </strong>
-                    </p>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      className={classes.MuiButton}
-                      onClick={(event) => deleteOrder(value, index)}
-                    >
-                      Remove
-                    </Button>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-        </Grid>
         <Button
           variant="contained"
           color="primary"
@@ -187,6 +156,78 @@ const Cart = () => {
         >
           Buy
         </Button>
+        <Grid container className={classes.root} spacing={2}>
+          <Grid item xs={12}>
+            <Grid container justify="center" spacing={4}>
+              {ordersList.map((value, index) => (
+                <Grid key={index} item>
+                  <Paper className={classes.paper}>
+                    <h1
+                      style={{
+                        textAlign: "end",
+                      }}
+                    >
+                      <IconButton
+                        size="small"
+                        aria-label="close"
+                        color="primary"
+                        style={{
+                          marginTop: "-15px",
+                          marginRight: "-15px",
+                        }}
+                        onClick={() => deleteOrder(value, index)}
+                      >
+                        <CloseIcon
+                          fontSize="small"
+                          style={{
+                            color: "red",
+                          }}
+                        />
+                      </IconButton>
+                    </h1>
+                    <h2
+                      style={{
+                        textAlign: "center",
+                        marginTop: "-50px",
+                        marginBottom: "-10px",
+                      }}
+                    >
+                      Pizza
+                    </h2>
+                    <p>
+                      <i>Ingredients</i>:{" "}
+                      {value.recipe.map((ingr) => {
+                        if (
+                          ingr === value.recipe[value.recipe.length - 1] &&
+                          ingr === "beefSauce"
+                        )
+                          return "beef sauce";
+                        if (ingr === value.recipe[value.recipe.length - 1])
+                          return ingr;
+                        if (ingr === "beefSauce") ingr = "beef sauce";
+                        return ingr + ", ";
+                      })}
+                    </p>
+                    <p>
+                      <i>Time</i>: {value.time}
+                    </p>
+                    <p>
+                      <i>Price</i>: {value.price}.00 RSD, <i>Discount</i>: 20%
+                    </p>
+                    <p style={{ textAlign: "center", marginTop: "-20px" }}>
+                      <strong>
+                        <br />
+                        <i>Final Price</i>:{" "}
+                        {Math.round((value.price * 0.8 * 100) / 100).toFixed(2)}{" "}
+                        RSD
+                      </strong>
+                    </p>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
       </Container>
     ) : (
       <div>

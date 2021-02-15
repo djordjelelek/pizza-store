@@ -36,29 +36,17 @@ export default function SimpleSnackbar(props) {
   const handleClick = () => {
     setOpen(true);
     if (logIn) {
-      const day = new Date().getDay();
-      const mounth = new Date().getDate() - 1;
+      const day = new Date().getDate();
+      const mounth = new Date().getMonth() + 1;
       const year = new Date().getFullYear();
       const hours = new Date().getHours();
       const minutes = new Date().getMinutes();
-      const seconds = new Date().getMinutes();
       const finalRecipe = {
         userId: userId,
         recipe: listItems,
         price: props.price,
-        date:
-          "Date: " +
-          day +
-          "." +
-          mounth +
-          "." +
-          year +
-          ". Time: " +
-          hours +
-          ":" +
-          minutes +
-          ":" +
-          seconds,
+        time:
+          day + "." + mounth + "." + year + ". " + hours + ":" + minutes + " h",
       };
       axios.post(
         "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json?auth=" +

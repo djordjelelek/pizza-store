@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MenuItems.module.css";
 import { useAuth } from "../../../AuthContext/AuthContext";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const MenuItems = () => {
@@ -16,7 +17,7 @@ const MenuItems = () => {
         <li className={classes.Element}>
           <NavLink
             to="/login"
-            activeStyle={{ color: "black" }}
+            activeStyle={{ color: "white" }}
             className={classes.NavLink}
           >
             Log In
@@ -25,8 +26,8 @@ const MenuItems = () => {
       ) : (
         <li className={classes.Element}>
           <NavLink
-            to="/home"
-            activeStyle={{ color: "black" }}
+            to="/login"
+            activeStyle={{ color: "white" }}
             className={classes.NavLink}
             onClick={() => {
               setLoading(true);
@@ -44,11 +45,16 @@ const MenuItems = () => {
           </NavLink>
         </li>
       )}
+      <li className={classes.Element}>
+        <NavLink to="/home" activeStyle={{ color: "white" }}>
+          Pizza Builder
+        </NavLink>
+      </li>
       {logIn ? (
         <li className={classes.Element}>
           <NavLink
             to="/orders-history"
-            activeStyle={{ color: "#2b2b2b" }}
+            activeStyle={{ color: "white" }}
             className={classes.NavLink}
           >
             Orders History
@@ -56,13 +62,8 @@ const MenuItems = () => {
         </li>
       ) : null}
       <li className={classes.Element}>
-        <NavLink to="/home" activeStyle={{ color: "#2b2b2b" }}>
-          Pizza Builder
-        </NavLink>
-      </li>
-      <li className={classes.Element}>
-        <NavLink to="/cart" activeStyle={{ color: "#2b2b2b" }}>
-          Cart
+        <NavLink to="/cart" activeStyle={{ color: "white" }}>
+          <ShoppingCartIcon className={classes.Cart}>Cart</ShoppingCartIcon>
         </NavLink>
       </li>
 
