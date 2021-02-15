@@ -116,7 +116,7 @@ function Receipt(props) {
         {props.ordersList.map((el, index) => (
           <ListItem key={index}>
             <ListItemText className={classes.Ingridients}>
-              <strong>ingridents</strong>:&nbsp;
+              <i>Pizza {index + 1}</i>:&nbsp;
               {el.recipe.map((ingr) => {
                 if (
                   ingr === el.recipe[el.recipe.length - 1] &&
@@ -144,18 +144,20 @@ function Receipt(props) {
         }}
       >
         <ListItemText>
-          <strong>Time: </strong>
+          <i>Time: </i>
           {time}
         </ListItemText>
         <ListItemText></ListItemText>
         <ListItemText>
-          <strong>Final prize: </strong>
-          {finalPrice} RSD
+          <strong>
+            <i>Final price: </i>
+            {finalPrice} RSD
+          </strong>
         </ListItemText>
       </List>
       <div style={{ textAlign: "center" }}>
         <Button onClick={() => props.handleClose()} style={{ color: "red" }}>
-          Disagree
+          cancel
         </Button>
         <Button
           onClick={() => createOrder()}
@@ -163,7 +165,7 @@ function Receipt(props) {
           autoFocus
           style={{ color: "blue" }}
         >
-          Agree
+          buy
         </Button>
       </div>
     </Dialog>

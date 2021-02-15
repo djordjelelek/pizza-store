@@ -58,8 +58,6 @@ export default function SimpleSnackbar(props) {
     for (const value in ingidentsUpdate) {
       ingidentsUpdate[value].show = false;
     }
-
-    // ingidentsUpdate.map((ingr) => (ingr.show = false));
     props.setIngredients({ ...ingidentsUpdate });
   };
 

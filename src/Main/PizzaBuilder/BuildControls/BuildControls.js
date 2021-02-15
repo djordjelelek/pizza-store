@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import classes from "./BuildControls.module.css";
 import Button from "@material-ui/core/Button";
-import Receipt from "./Receipt/Receipt";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import SnackBar from "./SnackBar/SnackBar";
+import { useAuth } from "../../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 const BuildControls = (props) => {
   const [price, setPrice] = useState(130);
   const classes = useStyles();
+  const { logIn } = useAuth();
 
   const changeButtonHanler = (ingr, value) => {
     const ingidentsUpdate = { ...props.ingredients };
@@ -61,7 +61,9 @@ const BuildControls = (props) => {
               color="default"
               size="small"
               fullWidth
-              onClick={() => changeButtonHanler(ingrident, "add")}
+              onClick={
+                logIn ? () => changeButtonHanler(ingrident, "add") : null
+              }
             >
               Add {ingrident}
             </Button>
@@ -71,24 +73,6 @@ const BuildControls = (props) => {
       <h1 className={classes.Header}>
         &nbsp;&nbsp;Current price: <strong>{price} RSD</strong>&nbsp;&nbsp;
       </h1>
-      {/* <Receipt
-        ingredients={props.ingredients}
-        price={price}
-        setShowRecipe={setShowRecipe}
-        showRecipe={showRecipe}
-        handleClose={handleClose}
-      /> */}
-      {/* <Button
-        disabled={price === 130}
-        variant="contained"
-        color="primary"
-        size="large"
-        // className={classes.OrderButton}
-        type="button"
-        onClick={() => handleOpen()}
-      >
-        Order
-      </Button> */}
       <SnackBar
         price={price}
         ingredients={props.ingredients}

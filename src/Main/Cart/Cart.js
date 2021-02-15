@@ -154,7 +154,7 @@ const Cart = () => {
           className={classes.MuiButton2}
           onClick={handleClickOpen}
         >
-          Buy
+          Proceed to checkout
         </Button>
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
@@ -234,7 +234,7 @@ const Cart = () => {
         <h1 className={classes.NoOrders}>
           The cart is empty <br /> With every online order you gain 20% off
           <br />
-          Make order{" "}
+          Make an order{" "}
           <a href="/home" className={classes.Link}>
             now
           </a>
