@@ -1,26 +1,48 @@
 import React, { useState, useEffect } from "react";
-import classesCSS from "./OrdersHistory.module.css";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { Grid, Container, Paper, CircularProgress } from "@material-ui/core";
 import { useAuth } from "../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
+  Container: {
+    marginLeft: "auto",
+    marginBottom: "42px",
+  },
+  Header: {
+    marginTop: "7px",
+    marginBottom: "-5px",
+  },
   root: {
     flexGrow: 1,
   },
   paper: {
+    backgroundColor: "rgba(255, 211, 128, 0.4)",
+    position: "relative",
+    textAlign: "left",
+    margin: "5px",
+    marginBottom: "-7px",
     height: "auto",
-    width: 370,
-    color: "#898989",
+    width: "370px",
+    color: "darkslategray",
+    paddingBottom: "0.1px",
+    paddingLeft: "17px",
+    paddingRight: "17px",
     paddingTop: "0px",
-    paddingBottom: "15px",
-    // textAlign: "justify"
+    boxShadow: "4px 4px 15px  grey",
+    borderRadius: "6px",
   },
   control: {
     padding: theme.spacing(2),
+  },
+
+  NoOrders: {
+    color: "rgb(255, 255, 255)",
+    padding: "70px",
+  },
+  Link: {
+    textDecoration: "none",
+    color: "rgb(73, 134, 231)",
   },
   SpinnerContainer: {
     position: "absolute",
@@ -44,7 +66,6 @@ const Orders = () => {
   const [ordersList, setOrdersList] = useState([]);
   const [loading, setLoading] = useState(true);
   const { token } = useAuth();
-  const { logIn } = useAuth();
   const { userId } = useAuth();
 
   useEffect(() => {
@@ -71,49 +92,51 @@ const Orders = () => {
       <CircularProgress className={classes.Spinner} />
     </div>
   ) : ordersList.length > 0 ? (
-    <div className={classesCSS.Orders}>
-      <h1 className={classesCSS.Header}>ORDERS HISTORY</h1>
+    <Container className={classes.Container}>
+      <h1 className={classes.Header}>ORDERS HISTORY</h1>
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={4}>
             {ordersList.map((value, index) => (
               <Grid key={index} item>
                 <Paper className={classes.paper}>
-                  <h1>Order</h1>
-                  <ol>
-                    {value.pizza.map((pizza, index) => (
-                      <li key={index}>
-                        <strong>pizza</strong>:
-                        {pizza[0].map((ingr) => ingr + ", ")}
-                        {pizza[1]}
-                        <br />
-                      </li>
-                    ))}
-                  </ol>
-                  {/* <p>
-                    <strong>price</strong>: {value.price} RSD
-                  </p> */}
-                  <p>
+                  <h2
+                    style={{
+                      textAlign: "center",
+                    }}
+                  >
+                    Order
+                  </h2>
+
+                  {value.pizza.map((pizza, index) => (
+                    <p>
+                      {" "}
+                      <i>{index + 1}.pizza</i>:{" "}
+                      {pizza[0].map((ingr) => ingr + ", ")}
+                      {pizza[1]}
+                    </p>
+                  ))}
+                  <p style={{ textAlign: "center", marginTop: "0px" }}>
                     <strong>
-                      total price:&nbsp;
+                      <i>Final Price:</i>&nbsp;
                       {value.finalPrice} RSD
                     </strong>
                   </p>
-                  <p>{value.date}</p>
+                  <p>{value.time}</p>
                 </Paper>
               </Grid>
             ))}
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   ) : (
     <div>
-      <h1 className={classesCSS.NoOrders}>
+      <h1 className={classes.NoOrders}>
         There is no order yet <br /> With every online order you gain 20% off
         <br />
         Make order{" "}
-        <a href="/home" className={classesCSS.Link}>
+        <a href="/home" className={classes.Link}>
           now
         </a>
       </h1>

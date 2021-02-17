@@ -28,7 +28,7 @@
 }
 
 .List a {
-    color: #20232a;
+    color: white;
     text-decoration: none;
     width: 80%;
     box-sizing: border-box;
@@ -76,7 +76,7 @@
 .Menu a:hover,
 .Menu a:active,
 .Menu a.active {
-    color: "white";
+    color: white;
     text-decoration: none;
 }
 
