@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleSnackbar(props) {
-  const [open, setOpen] = React.useState(false);
   const { token } = useAuth();
   const { userId } = useAuth();
   const { logIn } = useAuth();
@@ -34,7 +33,7 @@ export default function SimpleSnackbar(props) {
   );
 
   const handleClick = () => {
-    setOpen(true);
+    props.setOpen(true);
     if (logIn) {
       const day = new Date().getDate();
       const mounth = new Date().getMonth() + 1;
@@ -66,7 +65,7 @@ export default function SimpleSnackbar(props) {
       return;
     }
 
-    setOpen(false);
+    props.setOpen(false);
   };
 
   return (
@@ -86,7 +85,7 @@ export default function SimpleSnackbar(props) {
           vertical: "bottom",
           horizontal: "left",
         }}
-        open={open}
+        open={props.open}
         color="primary"
         autoHideDuration={6000}
         onClose={handleClose}

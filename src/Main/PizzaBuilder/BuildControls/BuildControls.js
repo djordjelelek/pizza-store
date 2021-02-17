@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BuildControls = (props) => {
   const [price, setPrice] = useState(130);
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   const { logIn } = useAuth();
 
@@ -62,7 +63,9 @@ const BuildControls = (props) => {
               size="small"
               fullWidth
               onClick={
-                logIn ? () => changeButtonHanler(ingrident, "add") : null
+                logIn
+                  ? () => changeButtonHanler(ingrident, "add")
+                  : () => setOpen(true)
               }
             >
               Add {ingrident}
@@ -77,6 +80,8 @@ const BuildControls = (props) => {
         price={price}
         ingredients={props.ingredients}
         setIngredients={props.setIngredients}
+        open={open}
+        setOpen={setOpen}
       />
     </Container>
   );
