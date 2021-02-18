@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "100%",
     height: "100%",
-    top: 0,
     left: 0,
     right: 0,
     bottom: 0,
@@ -123,7 +122,7 @@ const Cart = () => {
         .then((response) => {
           setOrdersList(Object.values(response.data));
           setKeys(Object.keys(response.data));
-          setLoading(false);
+          // setLoading(false);
         });
     };
     getOrders();
