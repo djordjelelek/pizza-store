@@ -4,9 +4,29 @@ import classes from "./MenuItems.module.css";
 import { useAuth } from "../../../AuthContext/AuthContext";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  SpinnerContainer: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backdropFilter: "blur(2px)",
+    zIndex: 1,
+  },
+  Spinner: {
+    marginTop: "100px",
+    color: "#4caf50",
+  },
+}));
 
 const MenuItems = () => {
   const [loading, setLoading] = useState(false);
+  const classes2 = useStyles();
   const { logIn } = useAuth();
   const { setLogIn } = useAuth();
   const { setToken } = useAuth();
@@ -68,10 +88,9 @@ const MenuItems = () => {
       </li>
 
       {loading ? (
-        <>
-          <div className={classes.SpinnerContainer}></div>
-          <CircularProgress color="secondary" className={classes.Spinner} />
-        </>
+        <div className={classes2.SpinnerContainer}>
+          <CircularProgress className={classes2.Spinner} />
+        </div>
       ) : null}
     </>
   );

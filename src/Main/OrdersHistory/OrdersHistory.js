@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Container, Paper, CircularProgress } from "@material-ui/core";
+import {
+  Grid,
+  Container,
+  Paper,
+  CircularProgress,
+  ListItem,
+  List,
+  ListItemText,
+} from "@material-ui/core";
 import { useAuth } from "../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,17 +31,27 @@ const useStyles = makeStyles((theme) => ({
     margin: "5px",
     marginBottom: "-7px",
     height: "auto",
-    width: "370px",
+    width: "430px",
     color: "darkslategray",
-    paddingBottom: "0.1px",
-    paddingLeft: "17px",
-    paddingRight: "17px",
+    paddingBottom: "0px",
+    paddingLeft: "0px",
+    paddingRight: "0px",
     paddingTop: "0px",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
   },
   control: {
     padding: theme.spacing(2),
+  },
+  Ingridients: {
+    maxWidth: "70%",
+  },
+  List: {
+    width: "100%",
+  },
+  Prices: {
+    top: 0,
+    textAlign: "end",
   },
 
   NoOrders: {
@@ -56,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
   },
   Spinner: {
-    marginTop: "312px",
+    marginTop: "200px",
     color: "#4caf50",
   },
 }));
@@ -103,26 +121,55 @@ const Orders = () => {
                   <h2
                     style={{
                       textAlign: "center",
+                      paddingTop: "8px",
+                      marginBottom: "0px",
                     }}
                   >
                     Order
                   </h2>
-
-                  {value.pizza.map((pizza, index) => (
-                    <p>
-                      {" "}
-                      <i>{index + 1}.pizza</i>:{" "}
-                      {pizza[0].map((ingr) => ingr + ", ")}
-                      {pizza[1]}
-                    </p>
-                  ))}
-                  <p style={{ textAlign: "center", marginTop: "0px" }}>
-                    <strong>
-                      <i>Final Price:</i>&nbsp;
-                      {value.finalPrice} RSD
-                    </strong>
-                  </p>
-                  <p>{value.time}</p>
+                  <List className={classes.List}>
+                    {value.pizza.map((pizza, index) => (
+                      <ListItem key={index} style={{ marginBottom: "-15px" }}>
+                        <ListItemText className={classes.Ingridients}>
+                          <i>pizza {index + 1}</i>:{" "}
+                          {pizza[0].map((ingr) => {
+                            if (
+                              ingr === pizza[0][pizza[0].length - 1] &&
+                              ingr === "beefSauce"
+                            )
+                              return "beef sauce";
+                            if (ingr === pizza[0][pizza[0].length - 1])
+                              return ingr;
+                            if (ingr === "beefSauce") ingr = "beef sauce";
+                            return ingr + ", ";
+                          })}
+                        </ListItemText>
+                        <ListItemText className={classes.Prices}>
+                          {pizza[1]} RSD
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </List>
+                  <List
+                    style={{
+                      width: "100%",
+                      paddingBottom: "0px",
+                    }}
+                  >
+                    <ListItem>
+                      <ListItemText>
+                        <i>Time: </i>
+                        {value.time}
+                      </ListItemText>
+                      <ListItemText></ListItemText>
+                      <ListItemText style={{ textAlign: "end" }}>
+                        <strong>
+                          <i>Final price: </i>
+                          {value.finalPrice} RSD
+                        </strong>
+                      </ListItemText>
+                    </ListItem>
+                  </List>
                 </Paper>
               </Grid>
             ))}

@@ -53,7 +53,15 @@ const Footer = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <GitHubIcon fontSize="default" style={{ color: "darkslategray" }} />
+            <GitHubIcon
+              fontSize="default"
+              style={{
+                color: "darkslategray",
+                "&:hover": {
+                  backgroundColor: "red",
+                },
+              }}
+            />
           </a>
         </div>
         <p className={classes.Owner}>Created by: Djordje Lelek</p>

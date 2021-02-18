@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
   },
   Spinner: {
-    marginTop: "312px",
+    marginTop: "200px",
     color: "#4caf50",
   },
 }));
@@ -95,7 +95,6 @@ const Cart = () => {
   };
 
   const deleteOrder = (value, index) => {
-    // console.log(value);
     const ordersListCopy = [...ordersList];
     ordersListCopy.splice(index, 1);
     setOrdersList(ordersListCopy);

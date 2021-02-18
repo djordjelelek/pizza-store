@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-8px",
     marginBottom: "-20px",
   },
+  Container: {
+    color: "darkslategray",
+  },
   ContainerElement: {
     textAlign: "center",
     display: "flex",
@@ -137,33 +140,40 @@ function Receipt(props) {
       <List
         style={{
           width: "100%",
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "start",
-          // justifyContent: "flex-end",
         }}
       >
-        <ListItemText>
-          <i>Time: </i>
-          {time}
-        </ListItemText>
-        <ListItemText></ListItemText>
-        <ListItemText>
-          <strong>
-            <i>Final price: </i>
-            {finalPrice} RSD
-          </strong>
-        </ListItemText>
+        <ListItem>
+          <ListItemText>
+            <i>Time: </i>
+            {time}
+          </ListItemText>
+          <ListItemText></ListItemText>
+          <ListItemText style={{ textAlign: "end" }}>
+            <strong>
+              <i>Final price: </i>
+              {finalPrice} RSD
+            </strong>
+          </ListItemText>
+        </ListItem>
       </List>
       <div style={{ textAlign: "center" }}>
-        <Button onClick={() => props.handleClose()} style={{ color: "red" }}>
+        <Button
+          onClick={() => props.handleClose()}
+          style={{ color: "rgb(255, 117, 55)" }}
+        >
           cancel
         </Button>
         <Button
           onClick={() => createOrder()}
           color="primary"
           autoFocus
-          style={{ color: "blue" }}
+          style={{
+            backgroundColor: "white",
+            color: "rgb(73, 134, 231)",
+            "&:hover": {
+              backgroundColor: "rgb(58, 105, 181)",
+            },
+          }}
         >
           buy
         </Button>
