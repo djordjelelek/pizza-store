@@ -1,0 +1,15 @@
+.LinkedIn {
+    color: darkslategray
+}
+
+.LinkedIn:hover {
+    color: #0073b1;
+}
+
+.GitHub {
+    color: darkslategray
+}
+
+.GitHub:hover {
+    color: white;
+}

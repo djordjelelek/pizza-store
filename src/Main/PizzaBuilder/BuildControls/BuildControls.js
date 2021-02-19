@@ -9,18 +9,32 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // flexGrow: 1,
     // textAlign: "center",
-    backgroundColor: "#ffffff00",
+    backgroundColor: "rgba(115, 41, 18, 0.4)",
     position: "relative",
     margin: "0px",
     marginBottom: "0px",
-    padding: "10px",
+    // padding: "10px",
+    height: "100%",
     // paddingTop: "20px",
     // paddingBottom: "0px",
   },
   buttons: {
-    paddingLeft: "40px",
-    paddingRight: "40px",
-    paddingBottom: "5px",
+    // paddingLeft: "40px",
+    // paddingRight: "40px",
+    // paddingBottom: "5px",
+  },
+  MuiButton: {
+    color: "rgb(73, 134, 231)",
+    // backgroundColor: "rgba(115, 41, 18, 0.4)",
+    "&:hover": {
+      color: "rgb(58, 105, 181)",
+    },
+  },
+  MuiButton2: {
+    color: "rgb(255, 117, 55)",
+    "&:hover": {
+      color: "red",
+    },
   },
   Header: {
     fontSize: "20px",
@@ -48,20 +62,20 @@ const BuildControls = (props) => {
         <div className={classes.buttons} key={index}>
           {props.ingredients[ingrident].show ? (
             <Button
-              variant="contained"
               color="primary"
               size="small"
               fullWidth
+              className={classes.MuiButton}
               onClick={() => changeButtonHanler(ingrident, "remove")}
             >
               Remove {ingrident}
             </Button>
           ) : (
             <Button
-              variant="contained"
-              color="default"
+              color="primary"
               size="small"
               fullWidth
+              className={classes.MuiButton2}
               onClick={
                 logIn
                   ? () => changeButtonHanler(ingrident, "add")

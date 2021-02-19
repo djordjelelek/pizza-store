@@ -122,7 +122,7 @@ const Cart = () => {
         .then((response) => {
           setOrdersList(Object.values(response.data));
           setKeys(Object.keys(response.data));
-          // setLoading(false);
+          setLoading(false);
         });
     };
     getOrders();

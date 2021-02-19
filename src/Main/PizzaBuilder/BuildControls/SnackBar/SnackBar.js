@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "rgb(73, 134, 231)",
   },
+  MuiButton: {
+    backgroundColor: "rgb(73, 134, 231)",
+    "&:hover": {
+      backgroundColor: "rgb(58, 105, 181)",
+    },
+  },
 }));
 
 export default function SimpleSnackbar(props) {
@@ -77,6 +83,7 @@ export default function SimpleSnackbar(props) {
         size="large"
         type="button"
         onClick={handleClick}
+        className={classes.MuiButton}
       >
         Add to Cart
       </Button>

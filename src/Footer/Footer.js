@@ -1,4 +1,5 @@
 import React from "react";
+import classes2 from "./Footer.module.css";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,10 +43,7 @@ const Footer = () => {
             target="_blank"
             className={classes.LinedIn}
           >
-            <LinkedInIcon
-              fontSize="default"
-              style={{ color: "darkslategray" }}
-            />
+            <LinkedInIcon fontSize="default" className={classes2.LinkedIn} />
           </a>
           <a
             href="https://github.com/djordjelelek"
@@ -53,15 +51,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <GitHubIcon
-              fontSize="default"
-              style={{
-                color: "darkslategray",
-                "&:hover": {
-                  backgroundColor: "red",
-                },
-              }}
-            />
+            <GitHubIcon fontSize="default" className={classes2.GitHub} />
           </a>
         </div>
         <p className={classes.Owner}>Created by: Djordje Lelek</p>
