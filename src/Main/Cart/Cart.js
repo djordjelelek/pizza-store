@@ -186,8 +186,7 @@ const Cart = () => {
                     <h2
                       style={{
                         textAlign: "center",
-                        marginTop: "-50px",
-                        marginBottom: "-10px",
+                        marginTop: "-46px",
                       }}
                     >
                       Pizza
@@ -212,7 +211,7 @@ const Cart = () => {
                     <p>
                       <i>Price</i>: {value.price}.00 RSD, <i>Discount</i>: 20%
                     </p>
-                    <p style={{ textAlign: "center", marginTop: "-20px" }}>
+                    <p style={{ textAlign: "center", marginTop: "-10px" }}>
                       <strong>
                         <br />
                         <i>Final Price</i>:{" "}

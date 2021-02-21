@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    backgroundColor: "rgba(255, 211, 128, 0.4)",
+    backgroundColor: "rgba(179, 255, 128, 0.4)",
     position: "relative",
     textAlign: "left",
     margin: "5px",

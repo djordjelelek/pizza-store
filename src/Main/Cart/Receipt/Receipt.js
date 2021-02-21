@@ -58,16 +58,16 @@ const useStyles = makeStyles((theme) => ({
   },
   MuiButton: {
     marginLeft: "12px",
-    backgroundColor: "#4caf50",
+    backgroundColor: "#8fcc66",
     "&:hover": {
-      backgroundColor: "rgb(54, 125, 57)",
+      backgroundColor: "#74a653",
     },
   },
   MuiButtonCancel: {
     marginRight: "12px",
-    backgroundColor: "rgb(255, 117, 55)",
+    backgroundColor: "rgb(204, 102, 102)",
     "&:hover": {
-      backgroundColor: "#cc5e2d",
+      backgroundColor: "rgb(166, 83, 83)",
     },
   },
 }));
