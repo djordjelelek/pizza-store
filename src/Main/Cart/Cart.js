@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#74a653",
     },
-    marginBottom: "8px",
+    marginBottom: "22px",
   },
   NoOrders: {
     color: "rgb(255, 255, 255)",

@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   Button,
+  Container,
   Dialog,
   DialogTitle,
   List,
@@ -14,8 +15,8 @@ import { useAuth } from "../../../AuthContext/AuthContext";
 const useStyles = makeStyles((theme) => ({
   Header: {
     textAlign: "center",
-    marginTop: "-8px",
-    marginBottom: "-20px",
+    marginTop: "0px",
+    marginBottom: "-5px",
   },
   Container: {
     color: "darkslategray",
@@ -25,16 +26,20 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
-  Ingridients: {
-    maxWidth: "75%",
-    textAlign: "justify",
-  },
   List: {
     width: "100%",
+    marginBottom: "25px",
+  },
+  Ingridients: {
+    maxWidth: "75%",
+    marginLeft: "8px",
+    marginBottom: "-6px",
   },
   Prices: {
     top: 0,
     textAlign: "end",
+    marginRight: "8px",
+    marginBottom: "-6px",
   },
   SpinnerContainer: {
     position: "absolute",
@@ -50,6 +55,20 @@ const useStyles = makeStyles((theme) => ({
   Spinner: {
     marginTop: "312px",
     color: "#4caf50",
+  },
+  MuiButton: {
+    marginLeft: "12px",
+    backgroundColor: "#4caf50",
+    "&:hover": {
+      backgroundColor: "rgb(54, 125, 57)",
+    },
+  },
+  MuiButtonCancel: {
+    marginRight: "12px",
+    backgroundColor: "rgb(255, 117, 55)",
+    "&:hover": {
+      backgroundColor: "#cc5e2d",
+    },
   },
 }));
 function Receipt(props) {
@@ -105,80 +124,84 @@ function Receipt(props) {
   };
 
   return (
-    <Dialog
-      open={props.openReceipt}
-      onClose={() => props.handleClose()}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      className={classes.Container}
-    >
-      <DialogTitle id="alert-dialog-title" className={classes.Header}>
-        <strong>{"Receipt"}</strong>
-      </DialogTitle>
-      <List className={classes.List}>
-        {props.ordersList.map((el, index) => (
-          <ListItem key={index}>
-            <ListItemText className={classes.Ingridients}>
-              <i>Pizza {index + 1}</i>:&nbsp;
-              {el.recipe.map((ingr) => {
-                if (
-                  ingr === el.recipe[el.recipe.length - 1] &&
-                  ingr === "beefSauce"
-                )
-                  return "beef sauce";
-                if (ingr === el.recipe[el.recipe.length - 1]) return ingr;
-                if (ingr === "beefSauce") ingr = "beef sauce";
-                return ingr + ", ";
-              })}
-            </ListItemText>
-            <ListItemText className={classes.Prices}>
-              {el.price}.00 RSD
-            </ListItemText>
-          </ListItem>
-        ))}
-      </List>
-      <List
-        style={{
-          width: "100%",
-        }}
+    <Container className={classes.Container}>
+      <Dialog
+        open={props.openReceipt}
+        onClose={() => props.handleClose()}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        className={classes.ContainerDialog}
       >
-        <ListItem>
-          <ListItemText>
-            <i>Time: </i>
-            {time}
-          </ListItemText>
-          <ListItemText></ListItemText>
-          <ListItemText style={{ textAlign: "end" }}>
-            <strong>
-              <i>Final price: </i>
-              {finalPrice} RSD
-            </strong>
-          </ListItemText>
-        </ListItem>
-      </List>
-      <div style={{ textAlign: "center" }}>
-        <Button
-          onClick={() => props.handleClose()}
-          style={{ color: "rgb(255, 117, 55)" }}
+        <DialogTitle
+          id="alert-dialog-title"
+          className={classes.Header}
+          style={{ fontSize: "100px" }}
         >
-          cancel
-        </Button>
-        <Button
-          onClick={() => createOrder()}
-          color="primary"
-          autoFocus
+          <strong>{"Receipt"}</strong>
+        </DialogTitle>
+        <List className={classes.List}>
+          {props.ordersList.map((el, index) => (
+            <ListItem key={index}>
+              <ListItemText className={classes.Ingridients}>
+                <i>Pizza {index + 1}</i>:&nbsp;
+                {el.recipe.map((ingr) => {
+                  if (
+                    ingr === el.recipe[el.recipe.length - 1] &&
+                    ingr === "beefSauce"
+                  )
+                    return "beef sauce";
+                  if (ingr === el.recipe[el.recipe.length - 1]) return ingr;
+                  if (ingr === "beefSauce") ingr = "beef sauce";
+                  return ingr + ", ";
+                })}
+              </ListItemText>
+              <ListItemText className={classes.Prices}>
+                {el.price}.00 RSD
+              </ListItemText>
+            </ListItem>
+          ))}
+        </List>
+        <List
           style={{
-            backgroundColor: "white",
-            color: "rgb(73, 134, 231)",
-            "&:hover": {
-              backgroundColor: "rgb(58, 105, 181)",
-            },
+            width: "100%",
+            marginTop: "-20px",
           }}
         >
-          buy
-        </Button>
-      </div>
-    </Dialog>
+          <ListItem>
+            <ListItemText style={{ marginLeft: "8px" }}>
+              <i>Time: </i>
+              {time}
+            </ListItemText>
+            <ListItemText></ListItemText>
+            <ListItemText style={{ textAlign: "end", marginRight: "8px" }}>
+              <strong>
+                <i>Final price: </i>
+                {finalPrice} RSD
+              </strong>
+            </ListItemText>
+          </ListItem>
+        </List>
+        <div style={{ textAlign: "center", marginBottom: "24px" }}>
+          <Button
+            onClick={() => props.handleClose()}
+            variant="contained"
+            color="secondary"
+            autoFocus
+            className={classes.MuiButtonCancel}
+          >
+            cancel
+          </Button>
+          <Button
+            onClick={() => createOrder()}
+            variant="contained"
+            color="secondary"
+            className={classes.MuiButton}
+          >
+            &nbsp; &nbsp;Buy&nbsp; &nbsp;
+          </Button>
+        </div>
+      </Dialog>
+    </Container>
   );
 }
 

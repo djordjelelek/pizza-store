@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Header: {
     marginTop: "7px",
-    marginBottom: "-5px",
+    marginBottom: "12px",
   },
   root: {
     flexGrow: 1,
@@ -131,7 +131,7 @@ const Orders = () => {
                     {value.pizza.map((pizza, index) => (
                       <ListItem key={index} style={{ marginBottom: "-15px" }}>
                         <ListItemText className={classes.Ingridients}>
-                          <i>pizza {index + 1}</i>:{" "}
+                          <i>Pizza {index + 1}</i>:{" "}
                           {pizza[0].map((ingr) => {
                             if (
                               ingr === pizza[0][pizza[0].length - 1] &&
