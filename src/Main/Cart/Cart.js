@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   Header: {
-    marginTop: "7px",
+    marginTop: "22px",
     marginBottom: "14px",
   },
   paper: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Spinner: {
     marginTop: "200px",
-    color: "#4caf50",
+    color: "#8fcc66",
   },
 }));
 

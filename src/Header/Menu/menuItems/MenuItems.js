@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
   },
   Spinner: {
-    marginTop: "100px",
-    color: "#4caf50",
+    marginTop: "200px",
+    color: "#8fcc66",
   },
 }));
 
@@ -58,7 +58,7 @@ const MenuItems = () => {
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("userId");
                 window.location.reload();
-              }, 2000);
+              }, 500);
             }}
           >
             Log Out

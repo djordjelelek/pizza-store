@@ -18,14 +18,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "42px",
   },
   Header: {
-    marginTop: "7px",
+    marginTop: "22px",
     marginBottom: "12px",
   },
   root: {
     flexGrow: 1,
   },
   paper: {
-    backgroundColor: "rgba(179, 255, 128, 0.4)",
+    backgroundColor: "rgba(128, 211, 255, 0.4)",
     position: "relative",
     textAlign: "left",
     margin: "5px",
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Spinner: {
     marginTop: "200px",
-    color: "#4caf50",
+    color: "#8fcc66",
   },
 }));
 

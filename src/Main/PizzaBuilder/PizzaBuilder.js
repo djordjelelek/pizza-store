@@ -74,10 +74,10 @@ const PizzaBuilder = () => {
     <>
       <Container className={classes.root}>
         <Grid container spacing={1}>
-          <Grid item lg={6}>
+          <Grid item lg={8}>
             <Pizza ingredients={ingridientsTrue} />
           </Grid>
-          <Grid item lg={6}>
+          <Grid item lg={4}>
             <BuildControls
               ingredients={ingredients}
               setIngredients={setIngredients}

@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Spinner: {
     marginTop: "309px",
-    color: "rgb(73, 134, 231)",
+    color: "#8fcc66",
   },
   inputFields: {
     zIndex: 10,

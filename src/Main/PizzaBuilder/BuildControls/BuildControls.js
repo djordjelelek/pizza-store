@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
     // flexGrow: 1,
     // textAlign: "center",
     backgroundColor: "rgba(115, 41, 18, 0.4)",
+    boxShadow: "4px 4px 15px  grey",
+    borderRadius: "6px",
     position: "relative",
     margin: "0px",
     marginBottom: "0px",

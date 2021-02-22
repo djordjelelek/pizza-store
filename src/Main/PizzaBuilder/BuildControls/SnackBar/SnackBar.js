@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
     color: "rgb(73, 134, 231)",
   },
   MuiButton: {
-    backgroundColor: "rgb(73, 134, 231)",
+    backgroundColor: "#8fcc66",
     "&:hover": {
-      backgroundColor: "rgb(58, 105, 181)",
+      backgroundColor: "#74a653",
     },
   },
 }));
@@ -51,7 +51,16 @@ export default function SimpleSnackbar(props) {
         recipe: listItems,
         price: props.price,
         time:
-          day + "." + mounth + "." + year + ". " + hours + ":" + minutes + " h",
+          day +
+          "." +
+          mounth +
+          "." +
+          year +
+          ". " +
+          (hours < 10 ? 0 + hours : hours) +
+          ":" +
+          (minutes < 10 ? 0 + minutes : minutes) +
+          " h",
       };
       axios.post(
         "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json?auth=" +

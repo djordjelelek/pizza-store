@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Spinner: {
     marginTop: "270px",
-    color: "rgb(73, 134, 231)",
+    color: "#8fcc66",
   },
 }));
 
