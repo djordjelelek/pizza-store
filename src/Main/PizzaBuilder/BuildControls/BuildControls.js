@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
+import {
+  Button,
+  Container,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Checkbox,
+  ListItemSecondaryAction,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SnackBar from "./SnackBar/SnackBar";
 import { useAuth } from "../../../AuthContext/AuthContext";
@@ -49,46 +57,94 @@ const BuildControls = (props) => {
   const classes = useStyles();
   const { logIn } = useAuth();
 
-  const changeButtonHanler = (ingr, value) => {
+  const changeButtonHanler = (ingr) => {
     const ingidentsUpdate = { ...props.ingredients };
     ingidentsUpdate[ingr].show = !props.ingredients[ingr].show;
     props.setIngredients({ ...ingidentsUpdate });
-    if (value === "add")
-      setPrice((price) => price + props.ingredients[ingr].price);
-    else if (value === "remove")
+    const value = props.ingredients[ingr].show;
+    if (value) setPrice((price) => price + props.ingredients[ingr].price);
+    else if (value === false)
       setPrice((price) => price - props.ingredients[ingr].price);
   };
   return (
     <Container className={classes.root}>
-      {Object.keys(props.ingredients).map((ingrident, index) => (
-        <div className={classes.buttons} key={index}>
-          {props.ingredients[ingrident].show ? (
-            <Button
-              color="primary"
-              size="small"
-              fullWidth
-              className={classes.MuiButton}
-              onClick={() => changeButtonHanler(ingrident, "remove")}
-            >
-              Remove {ingrident}
-            </Button>
-          ) : (
-            <Button
-              color="primary"
-              size="small"
-              fullWidth
-              className={classes.MuiButton2}
-              onClick={
-                logIn
-                  ? () => changeButtonHanler(ingrident, "add")
-                  : () => setOpen(true)
-              }
-            >
-              Add {ingrident}
-            </Button>
-          )}
-        </div>
-      ))}
+      <List className={classes.paper}>
+        {Object.keys(props.ingredients).map((ingrident, index) => (
+          <ListItem
+            key={index}
+            role={undefined}
+            dense
+            button
+            onClick={() => changeButtonHanler(ingrident)}
+          >
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                style={{
+                  color: "#4caf50",
+                  "&:hover": {
+                    color: "rgb(54, 125, 57)",
+                  },
+                }}
+                checked={props.ingredients[ingrident].show === true}
+                tabIndex={-1}
+                disableRipple
+                // inputProps={{ "aria-labelledby": labelId }}
+              />
+            </ListItemIcon>
+            <ListItemText
+              id={index}
+              primary={ingrident !== "beefSauce" ? ingrident : "beef sauce"}
+              className={classes.ListText}
+              // style={
+              //   props.checked.includes(value)
+              //     ? { textDecoration: "line-through" }
+              //     : null
+              // }
+            />
+            <ListItemSecondaryAction>
+              <ListItemText
+                id={index}
+                primary={props.ingredients[ingrident].price + ".00 RSD"}
+                className={classes.ListText}
+                // style={
+                //   props.checked.includes(value)
+                //     ? { textDecoration: "line-through" }
+                //     : null
+                // }
+              />
+            </ListItemSecondaryAction>
+          </ListItem>
+
+          // <div className={classes.buttons} key={index}>
+          //   {props.ingredients[ingrident].show ? (
+          //     <Button
+          //       color="primary"
+          //       size="small"
+          //       fullWidth
+          //       className={classes.MuiButton}
+          //       onClick={() => changeButtonHanler(ingrident, "remove")}
+          //     >
+          //       Remove {ingrident}
+          //     </Button>
+          //   ) : (
+          //     <Button
+          //       color="primary"
+          //       size="small"
+          //       fullWidth
+          //       className={classes.MuiButton2}
+          //       onClick={
+          //         logIn
+          //           ? () => changeButtonHanler(ingrident, "add")
+          //           : () => setOpen(true)
+          //       }
+          //     >
+          //       Add {ingrident}
+          //     </Button>
+          //   )}
+          // </div>
+        ))}
+      </List>
       <h1 className={classes.Header}>
         &nbsp;&nbsp;Current price: <strong>{price} RSD</strong>&nbsp;&nbsp;
       </h1>

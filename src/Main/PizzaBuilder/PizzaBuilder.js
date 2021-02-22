@@ -54,15 +54,15 @@ const useStyles = makeStyles((theme) => ({
 const PizzaBuilder = () => {
   const classes = useStyles();
   const [ingredients, setIngredients] = useState({
-    ketchup: { price: 1, show: false },
-    ham: { price: 1, show: false },
-    mushrooms: { price: 1, show: false },
-    meyo: { price: 1, show: false },
-    chicken: { price: 60, show: false },
-    beefSauce: { price: 30, show: false },
-    bacon: { price: 40, show: false },
+    ketchup: { price: 0, show: false },
+    ham: { price: 70, show: false },
+    mushrooms: { price: 40, show: false },
+    meyo: { price: 0, show: false },
+    chicken: { price: 70, show: false },
+    beefSauce: { price: 50, show: false },
+    bacon: { price: 60, show: false },
     onions: { price: 10, show: false },
-    peppers: { price: 10, show: false },
+    peppers: { price: 20, show: false },
     olives: { price: 20, show: false },
   });
 
