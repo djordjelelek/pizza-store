@@ -14,9 +14,7 @@ import SnackBar from "./SnackBar/SnackBar";
 import { useAuth } from "../../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // flexGrow: 1,
-    // textAlign: "center",
+  Container: {
     backgroundColor: "rgba(115, 41, 18, 0.6)",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
@@ -32,34 +30,13 @@ const useStyles = makeStyles((theme) => ({
     // paddingTop: "20px",
     // paddingBottom: "0px",
   },
-  paper: {},
+  List: {},
   listItem: {
     // marginBottom: "-5px",
     // marginBottom: "-20px",
     padding: "0px",
     paddingLeft: "10px",
     // backgroundColor: "blue",
-  },
-  buttons: {
-    // paddingLeft: "40px",
-    // paddingRight: "40px",
-    // paddingBottom: "5px",
-  },
-  MuiButton: {
-    color: "rgb(73, 134, 231)",
-    // backgroundColor: "rgba(115, 41, 18, 0.4)",
-    "&:hover": {
-      color: "rgb(58, 105, 181)",
-    },
-  },
-  MuiButton2: {
-    color: "rgb(255, 117, 55)",
-    "&:hover": {
-      color: "red",
-    },
-  },
-  Header: {
-    // fontSize: "20px",
   },
 }));
 
@@ -79,13 +56,11 @@ const BuildControls = (props) => {
       : setPrice((price) => price - props.ingredients[ingr].price);
   };
   return (
-    <Container className={classes.root}>
-      <List className={classes.paper}>
+    <Container className={classes.Container}>
+      <List className={classes.List}>
         {Object.keys(props.ingredients).map((ingrident, index) => (
           <ListItem
             key={index}
-            // role={undefined}
-            // dense
             button
             onClick={
               logIn ? () => changeButtonHanler(ingrident) : () => setOpen(true)
@@ -104,62 +79,21 @@ const BuildControls = (props) => {
                 checked={props.ingredients[ingrident].show === true}
                 tabIndex={-1}
                 disableRipple
-                // inputProps={{ "aria-labelledby": labelId }}
               />
             </ListItemIcon>
             <ListItemText
               id={index}
               primary={ingrident !== "beefSauce" ? ingrident : "beef sauce"}
               className={classes.ListText}
-              // style={{ color: "darkslategray" }}
-              // style={
-              //   props.checked.includes(value)
-              //     ? { textDecoration: "line-through" }
-              //     : null
-              // }
             />
             <ListItemSecondaryAction>
               <ListItemText
                 id={index}
                 primary={props.ingredients[ingrident].price + ".00 RSD"}
                 className={classes.ListText}
-                // style={{ color: "darkslategray" }}
-                // style={
-                //   props.checked.includes(value)
-                //     ? { textDecoration: "line-through" }
-                //     : null
-                // }
               />
             </ListItemSecondaryAction>
           </ListItem>
-
-          // <div className={classes.buttons} key={index}>
-          //   {props.ingredients[ingrident].show ? (
-          //     <Button
-          //       color="primary"
-          //       size="small"
-          //       fullWidth
-          //       className={classes.MuiButton}
-          //       onClick={() => changeButtonHanler(ingrident, "remove")}
-          //     >
-          //       Remove {ingrident}
-          //     </Button>
-          //   ) : (
-          //     <Button
-          //       color="primary"
-          //       size="small"
-          //       fullWidth
-          //       className={classes.MuiButton2}
-          //       onClick={
-          //         logIn
-          //           ? () => changeButtonHanler(ingrident, "add")
-          //           : () => setOpen(true)
-          //       }
-          //     >
-          //       Add {ingrident}
-          //     </Button>
-          //   )}
-          // </div>
         ))}
       </List>
       <p className={classes.Header} style={{ marginBottom: "12px" }}>

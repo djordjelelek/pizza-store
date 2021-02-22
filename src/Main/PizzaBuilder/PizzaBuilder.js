@@ -5,35 +5,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   paddingBottom: "10px",
-  //   paddingTop: "10px",
-  //   backgroundColor: "rgba(252, 252, 252, 0.274)",
-  //   textAlign: "center",
-  // },
-  root: {
+  Container: {
     flexGrow: 1,
-
     textAlign: "center",
     backgroundColor: "#ffffff00",
-    // padding: "20px",
+    padding: "10px",
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  paper1: {
-    height: "450px",
-    // width: "auto",
-  },
-  paper2: {
-    // height: "auto",
-    // width: "auto",
-  },
-  control: {
-    padding: theme.spacing(2),
-  },
+
   SpinnerContainer: {
     position: "absolute",
     width: "100%",
@@ -72,7 +55,7 @@ const PizzaBuilder = () => {
 
   return (
     <>
-      <Container className={classes.root}>
+      <Container className={classes.Container}>
         <Grid container spacing={1}>
           <Grid item lg={8}>
             <Pizza ingredients={ingridientsTrue} />

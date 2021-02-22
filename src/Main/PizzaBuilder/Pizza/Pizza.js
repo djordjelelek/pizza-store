@@ -5,9 +5,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // flexGrow: 1,
-    // textAlign: "center",
+  Container: {
     backgroundColor: "rgba(115, 41, 18, 0.4)",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
@@ -15,18 +13,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     paddingTop: "25px",
     paddingBottom: "25px",
-
-    // marginBottom: "-5px",
-    // marginBottom: "0px",
-    // paddingTop: "20px",
-    // paddingBottom: "0px",
   },
 }));
 
 const Pizza = (props) => {
   const classess = useStyles();
   return (
-    <Container className={classess.root}>
+    <Container className={classess.Container}>
       <div className={classes.pizza}>
         {props.ingredients.map((ingrident, index) => {
           return <PizzaIngridiants type={ingrident} key={index} />;

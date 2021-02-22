@@ -1,12 +1,7 @@
 .pizza {
-    /* padding: 10px; */
-    /* margin: 30px; */
     position: relative;
     min-width: 265px;
     text-align: center;
-    /* max-height: auto; */
-    /* text-align: center; */
-    /* width: 280px; */
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.1);
     border: 2px solid rgba(255, 219, 128, 0);
