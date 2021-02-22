@@ -83,7 +83,18 @@ function Receipt(props) {
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
   const time =
-    day + "." + mounth + "." + year + ". " + hours + ":" + minutes + "h";
+    day +
+    "." +
+    mounth +
+    "." +
+    year +
+    ". " +
+    (hours < 10 ? 0 + hours : "") +
+    hours +
+    ":" +
+    (minutes < 10 ? 0 : "") +
+    minutes +
+    "h";
 
   const finalPrice = Math.round(
     props.ordersList

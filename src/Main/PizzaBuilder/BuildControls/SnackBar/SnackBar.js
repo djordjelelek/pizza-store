@@ -57,10 +57,12 @@ export default function SimpleSnackbar(props) {
           "." +
           year +
           ". " +
-          (hours < 10 ? 0 + hours : hours) +
+          (hours < 10 ? 0 + hours : "") +
+          hours +
           ":" +
-          (minutes < 10 ? 0 + minutes : minutes) +
-          " h",
+          (minutes < 10 ? 0 : "") +
+          minutes +
+          "h",
       };
       axios.post(
         "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json?auth=" +
