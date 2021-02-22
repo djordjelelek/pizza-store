@@ -17,16 +17,28 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // flexGrow: 1,
     // textAlign: "center",
-    backgroundColor: "rgba(115, 41, 18, 0.4)",
+    backgroundColor: "rgba(115, 41, 18, 0.6)",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
     position: "relative",
     margin: "0px",
     marginBottom: "0px",
-    // padding: "10px",
+    // padding: "15px",
+    // paddingTop: "5px",
+    // paddingBootom: "5px",
     height: "100%",
+    width: "100%",
+    minWidth: "300px",
     // paddingTop: "20px",
     // paddingBottom: "0px",
+  },
+  paper: {},
+  listItem: {
+    // marginBottom: "-5px",
+    // marginBottom: "-20px",
+    padding: "0px",
+    paddingLeft: "10px",
+    // backgroundColor: "blue",
   },
   buttons: {
     // paddingLeft: "40px",
@@ -47,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   Header: {
-    fontSize: "20px",
+    // fontSize: "20px",
   },
 }));
 
@@ -62,9 +74,9 @@ const BuildControls = (props) => {
     ingidentsUpdate[ingr].show = !props.ingredients[ingr].show;
     props.setIngredients({ ...ingidentsUpdate });
     const value = props.ingredients[ingr].show;
-    if (value) setPrice((price) => price + props.ingredients[ingr].price);
-    else if (value === false)
-      setPrice((price) => price - props.ingredients[ingr].price);
+    value
+      ? setPrice((price) => price + props.ingredients[ingr].price)
+      : setPrice((price) => price - props.ingredients[ingr].price);
   };
   return (
     <Container className={classes.root}>
@@ -72,10 +84,13 @@ const BuildControls = (props) => {
         {Object.keys(props.ingredients).map((ingrident, index) => (
           <ListItem
             key={index}
-            role={undefined}
-            dense
+            // role={undefined}
+            // dense
             button
-            onClick={() => changeButtonHanler(ingrident)}
+            onClick={
+              logIn ? () => changeButtonHanler(ingrident) : () => setOpen(true)
+            }
+            className={classes.listItem}
           >
             <ListItemIcon>
               <Checkbox
@@ -96,6 +111,7 @@ const BuildControls = (props) => {
               id={index}
               primary={ingrident !== "beefSauce" ? ingrident : "beef sauce"}
               className={classes.ListText}
+              // style={{ color: "darkslategray" }}
               // style={
               //   props.checked.includes(value)
               //     ? { textDecoration: "line-through" }
@@ -107,6 +123,7 @@ const BuildControls = (props) => {
                 id={index}
                 primary={props.ingredients[ingrident].price + ".00 RSD"}
                 className={classes.ListText}
+                // style={{ color: "darkslategray" }}
                 // style={
                 //   props.checked.includes(value)
                 //     ? { textDecoration: "line-through" }
@@ -145,11 +162,12 @@ const BuildControls = (props) => {
           // </div>
         ))}
       </List>
-      <h1 className={classes.Header}>
-        &nbsp;&nbsp;Current price: <strong>{price} RSD</strong>&nbsp;&nbsp;
-      </h1>
+      <p className={classes.Header} style={{ marginBottom: "12px" }}>
+        &nbsp;&nbsp;<strong>Total price: {price} RSD</strong>&nbsp;&nbsp;
+      </p>
       <SnackBar
         price={price}
+        setPrice={setPrice}
         ingredients={props.ingredients}
         setIngredients={props.setIngredients}
         open={open}

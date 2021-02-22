@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
   MuiButton: {
     backgroundColor: "#8fcc66",
+    marginBottom: "0px",
+    bottom: 0,
     "&:hover": {
       backgroundColor: "#74a653",
     },
@@ -75,6 +77,7 @@ export default function SimpleSnackbar(props) {
       ingidentsUpdate[value].show = false;
     }
     props.setIngredients({ ...ingidentsUpdate });
+    props.setPrice(130);
   };
 
   const handleClose = (event, reason) => {
@@ -91,7 +94,6 @@ export default function SimpleSnackbar(props) {
         disabled={props.price === 130}
         variant="contained"
         color="primary"
-        size="large"
         type="button"
         onClick={handleClick}
         className={classes.MuiButton}

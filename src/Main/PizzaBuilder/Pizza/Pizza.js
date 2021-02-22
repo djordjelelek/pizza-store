@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "6px",
     margin: "auto",
     textAlign: "center",
+    paddingTop: "25px",
+    paddingBottom: "25px",
+
     // marginBottom: "-5px",
     // marginBottom: "0px",
     // paddingTop: "20px",
