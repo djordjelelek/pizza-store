@@ -1,6 +1,6 @@
 .pizza {
     position: relative;
-    min-width: 265px;
+    /* min-width: 265px; */
     text-align: center;
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.1);
@@ -17,17 +17,11 @@
 @media (max-width: 501px) and (max-height: 401px) {
     .pizza {
         width: 320px;
-        margin-right: 250px;
+        /* margin-right: 250px; */
     }
 }
 
 @media (min-width: 551px) and (min-height: 451px) {
-    .pizza {
-        width: 450px;
-    }
-}
-
-@media (min-width: 1000px) and (min-height: 700px) {
     .pizza {
         width: 500px;
     }

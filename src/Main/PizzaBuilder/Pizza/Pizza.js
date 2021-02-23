@@ -9,12 +9,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(115, 41, 18, 0.4)",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
-    margin: "auto",
-    textAlign: "end",
-    right: 0,
-    position: "relative",
-    paddingTop: "30px",
-    paddingBottom: "30px",
+    // display: "flex",
+    // flex: 5,
+    padding: "30px",
+
+    maxWidth: "575px",
+    // marginLeft: "-250px",
+
+    // marginRight: "20px",
+    // marginLeft: "-20px",
+
+    // maxWidth: "550px",
+    // maxHeight: "550px",
   },
 }));
 

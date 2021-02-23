@@ -9,18 +9,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "center",
     backgroundColor: "#ffffff00",
-    padding: "10px",
+    padding: "20px",
+    paddingTop: "50px",
     display: "flex",
     alignItems: "stretch",
     justifyContent: "center",
     height: "unset",
+    marginLeft: "-150px",
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-
   SpinnerContainer: {
     position: "absolute",
     width: "100%",
@@ -58,15 +54,13 @@ const PizzaBuilder = () => {
   );
 
   return (
-    <>
-      <Container className={classes.Container}>
-        <Pizza ingredients={ingridientsTrue} />
-        <BuildControls
-          ingredients={ingredients}
-          setIngredients={setIngredients}
-        />
-      </Container>
-    </>
+    <Container className={classes.Container}>
+      <Pizza ingredients={ingridientsTrue} />
+      <BuildControls
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+      />
+    </Container>
   );
 };
 
