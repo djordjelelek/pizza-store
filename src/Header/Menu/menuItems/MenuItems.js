@@ -7,6 +7,14 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  Cart: {
+    ":hover": {
+      color: "white",
+    },
+    ":active": {
+      backgroundColor: "red",
+    },
+  },
   SpinnerContainer: {
     position: "absolute",
     width: "100%",
@@ -35,11 +43,7 @@ const MenuItems = () => {
     <>
       {logIn !== true ? (
         <li className={classes.Element}>
-          <NavLink
-            to="/login"
-            activeStyle={{ color: "white" }}
-            className={classes.NavLink}
-          >
+          <NavLink to="/login" activeStyle={{ color: "white" }}>
             Log In
           </NavLink>
         </li>
@@ -48,7 +52,6 @@ const MenuItems = () => {
           <NavLink
             to="/login"
             activeStyle={{ color: "white" }}
-            className={classes.NavLink}
             onClick={() => {
               setLoading(true);
               setTimeout(() => {
@@ -72,18 +75,14 @@ const MenuItems = () => {
       </li>
       {logIn ? (
         <li className={classes.Element}>
-          <NavLink
-            to="/orders-history"
-            activeStyle={{ color: "white" }}
-            className={classes.NavLink}
-          >
+          <NavLink to="/orders-history" activeStyle={{ color: "white" }}>
             Orders History
           </NavLink>
         </li>
       ) : null}
       <li className={classes.Element}>
         <NavLink to="/cart" activeStyle={{ color: "white" }}>
-          <ShoppingCartIcon className={classes.Cart}>Cart</ShoppingCartIcon>
+          <ShoppingCartIcon className={classes2.Cart}>Cart</ShoppingCartIcon>
         </NavLink>
       </li>
 
