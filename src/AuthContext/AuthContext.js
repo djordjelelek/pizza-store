@@ -20,9 +20,24 @@ function AuthProvider({ children }) {
       ? sessionStorage.getItem("token")
       : ""
   );
+  const [cart, setCart] = useState(
+    localStorage.getItem("cart") !== null
+      ? parseInt(localStorage.getItem("cart"))
+      : 0
+  );
+
   return (
     <AuthContext.Provider
-      value={{ logIn, setLogIn, token, setToken, userId, setUserId }}
+      value={{
+        logIn,
+        setLogIn,
+        token,
+        setToken,
+        userId,
+        setUserId,
+        cart,
+        setCart,
+      }}
     >
       {children}
     </AuthContext.Provider>

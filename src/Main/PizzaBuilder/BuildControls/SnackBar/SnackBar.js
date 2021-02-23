@@ -34,6 +34,7 @@ export default function SimpleSnackbar(props) {
   const { token } = useAuth();
   const { userId } = useAuth();
   const { logIn } = useAuth();
+  const { setCart } = useAuth();
   const classes = useStyles();
 
   const listItems = Object.keys(props.ingredients).filter(
@@ -43,6 +44,10 @@ export default function SimpleSnackbar(props) {
   const handleClick = () => {
     props.setOpen(true);
     if (logIn) {
+      const cartStorage = parseInt(localStorage.getItem("cart"));
+      localStorage.setItem("cart", cartStorage + 1);
+      setCart(cartStorage + 1);
+
       const day = new Date().getDate();
       const mounth = new Date().getMonth() + 1;
       const year = new Date().getFullYear();

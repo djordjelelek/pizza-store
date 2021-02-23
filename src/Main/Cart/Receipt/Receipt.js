@@ -16,6 +16,7 @@ function Receipt(props) {
   const classes = useStyles();
   const { token } = useAuth();
   const { userId } = useAuth();
+  const { setCart } = useAuth();
   const history = useHistory();
 
   const day = new Date().getDate();
@@ -45,6 +46,8 @@ function Receipt(props) {
 
   const createOrder = () => {
     props.setLoading(true);
+    localStorage.setItem("cart", 0);
+    setCart(0);
     setTimeout(() => {
       history.push("/home");
     }, 300);

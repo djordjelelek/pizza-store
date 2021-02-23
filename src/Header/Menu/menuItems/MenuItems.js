@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MenuItems.module.css";
 import { useAuth } from "../../../AuthContext/AuthContext";
+import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   Cart: {
@@ -39,6 +41,19 @@ const MenuItems = () => {
   const { setLogIn } = useAuth();
   const { setToken } = useAuth();
   const { setUserId } = useAuth();
+  const { cart } = useAuth();
+
+  const StyledBadge = withStyles((theme) => ({
+    badge: {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+      color: "white",
+      backgroundColor: "red",
+    },
+  }))(Badge);
+
   return (
     <>
       {logIn !== true ? (
@@ -82,7 +97,9 @@ const MenuItems = () => {
       ) : null}
       <li className={classes.Element}>
         <NavLink to="/cart" activeStyle={{ color: "white" }}>
-          <ShoppingCartIcon className={classes2.Cart}>Cart</ShoppingCartIcon>
+          <StyledBadge badgeContent={logIn ? cart : null}>
+            <ShoppingCartIcon className={classes2.Cart}>Cart</ShoppingCartIcon>
+          </StyledBadge>
         </NavLink>
       </li>
 

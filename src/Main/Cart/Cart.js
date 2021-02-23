@@ -22,6 +22,7 @@ const Cart = () => {
   const { token } = useAuth();
   const { logIn } = useAuth();
   const { userId } = useAuth();
+  const { setCart } = useAuth();
 
   const handleClickOpen = () => {
     setOpenReceipt(true);
@@ -32,6 +33,10 @@ const Cart = () => {
   };
 
   const deleteOrder = (value, index) => {
+    const cartStorage = parseInt(localStorage.getItem("cart"));
+    localStorage.setItem("cart", cartStorage - 1);
+    setCart(cartStorage - 1);
+
     const ordersListCopy = [...ordersList];
     ordersListCopy.splice(index, 1);
     setOrdersList(ordersListCopy);
