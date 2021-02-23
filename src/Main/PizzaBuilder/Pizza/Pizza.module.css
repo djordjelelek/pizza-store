@@ -2,6 +2,7 @@
     position: relative;
     /* min-width: 265px; */
     text-align: center;
+    margin-left: 5px;
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.1);
     border: 2px solid rgba(255, 219, 128, 0);

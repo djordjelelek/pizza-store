@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     margin: "0px",
     marginBottom: "0px",
-    padding: "30px",
+    padding: " 33px 25px 30px 30px",
+    // paddingRight: "25px",
+    // paddingTop: "33px",
     // paddingTop: "5px",
     // paddingBootom: "5px",
     // height: "100%",
@@ -41,8 +43,14 @@ const useStyles = makeStyles((theme) => ({
   List: {
     marginTop: "-15px",
   },
+  ListText: {
+    marginLeft: "-20px",
+  },
   PriceButton: {
-    marginTop: "60px",
+    marginTop: "47px",
+  },
+  Price: {
+    // marginTop: "-10px",
   },
   listItem: {
     marginBottom: "-5px",
@@ -110,7 +118,7 @@ const BuildControls = (props) => {
         ))}
       </List>
       <div className={classes.PriceButton}>
-        <p className={classes.Header} style={{ marginBottom: "12px" }}>
+        <p className={classes.Price} style={{ marginBottom: "18px" }}>
           &nbsp;&nbsp;<strong>Total price: {price} RSD</strong>&nbsp;&nbsp;
         </p>
         <SnackBar

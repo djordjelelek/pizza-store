@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     // flex: 5,
     padding: "30px",
 
-    maxWidth: "575px",
+    maxWidth: "570px",
     // marginLeft: "-250px",
 
     // marginRight: "20px",
