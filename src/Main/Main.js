@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     paddingBottom: "10px",
     paddingTop: "10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    // flex: 1,
   },
 }));
 const Main = () => {

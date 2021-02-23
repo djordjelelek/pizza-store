@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundColor: "#ffffff00",
     padding: "10px",
+    display: "flex",
+    alignItems: "stretch",
+    justifyContent: "center",
+    height: "unset",
   },
   paper: {
     padding: theme.spacing(2),
@@ -56,17 +60,11 @@ const PizzaBuilder = () => {
   return (
     <>
       <Container className={classes.Container}>
-        <Grid container spacing={1}>
-          <Grid item lg={8}>
-            <Pizza ingredients={ingridientsTrue} />
-          </Grid>
-          <Grid item lg={4}>
-            <BuildControls
-              ingredients={ingredients}
-              setIngredients={setIngredients}
-            />
-          </Grid>
-        </Grid>
+        <Pizza ingredients={ingridientsTrue} />
+        <BuildControls
+          ingredients={ingredients}
+          setIngredients={setIngredients}
+        />
       </Container>
     </>
   );

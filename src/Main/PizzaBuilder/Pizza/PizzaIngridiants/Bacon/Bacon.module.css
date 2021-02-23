@@ -11,6 +11,7 @@
     height: 13%;
     border-radius: 15%;
     background-image: linear-gradient(90deg, #753434 0%, #b14f4f 30%, #ecc67f 35%, #d1ad69 65%, #b14f4f 70%, #753434);
+    z-index: 5;
 }
 
 .bacon_1 {

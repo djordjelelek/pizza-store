@@ -10,9 +10,11 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
     margin: "auto",
-    textAlign: "center",
-    paddingTop: "25px",
-    paddingBottom: "25px",
+    textAlign: "end",
+    right: 0,
+    position: "relative",
+    paddingTop: "30px",
+    paddingBottom: "30px",
   },
 }));
 
