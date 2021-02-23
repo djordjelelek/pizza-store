@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
     // maxWidth: "400px",
     // marginLeft: "0px",
     // marginRight: "50px",
+    "@media (max-width: 1100px)": {
+      marginLeft: "0px",
+    },
   },
   List: {
     marginTop: "-15px",

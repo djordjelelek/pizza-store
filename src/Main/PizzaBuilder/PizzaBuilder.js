@@ -16,6 +16,16 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     height: "unset",
     marginLeft: "-150px",
+
+    "@media (max-width: 960px)": {
+      display: "flex",
+      flexDirection: "column",
+      marginLeft: "0px",
+    },
+
+    "@media (max-width: 1100px)": {
+      marginLeft: "0px",
+    },
   },
   SpinnerContainer: {
     position: "absolute",
