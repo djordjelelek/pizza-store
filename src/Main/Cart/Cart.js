@@ -53,20 +53,21 @@ const Cart = () => {
 
   useEffect(() => {
     const getOrders = () => {
-      axios
-        .get(
-          "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json" +
-            "?auth=" +
-            token +
-            '&orderBy="userId"&equalTo="' +
-            userId +
-            '"'
-        )
-        .then((response) => {
-          setOrdersList(Object.values(response.data));
-          setKeys(Object.keys(response.data));
-          setLoading(false);
-        });
+      if (logIn)
+        axios
+          .get(
+            "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json" +
+              "?auth=" +
+              token +
+              '&orderBy="userId"&equalTo="' +
+              userId +
+              '"'
+          )
+          .then((response) => {
+            setOrdersList(Object.values(response.data));
+            setKeys(Object.keys(response.data));
+            setLoading(false);
+          });
     };
     getOrders();
   }, []);

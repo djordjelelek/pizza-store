@@ -3,10 +3,7 @@ import menu from "./menu-mobile.svg.png";
 import MenuItems from "../menuItems/MenuItems";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles({
   list: {
@@ -43,6 +40,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(false)}
     >
       <MenuItems />
+      <Divider />
     </div>
   );
 
