@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Pizza from "./Pizza/Pizza";
 import BuildControls from "./BuildControls/BuildControls";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Grid } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import { useAuth } from "../../AuthContext/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   Container: {
@@ -45,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PizzaBuilder = () => {
+  const { logIn } = useAuth();
+  const { token } = useAuth();
+  const { userId } = useAuth();
+  const { setCart } = useAuth();
+
   const classes = useStyles();
   const [ingredients, setIngredients] = useState({
     ham: { price: 70, show: false },
@@ -62,6 +69,31 @@ const PizzaBuilder = () => {
   const ingridientsTrue = Object.keys(ingredients).filter(
     (el) => ingredients[el].show
   );
+
+  useEffect(() => {
+    const getOrders = () => {
+      if (logIn)
+        axios
+          .get(
+            "https://pizza-app-rg-default-rtdb.firebaseio.com/carts.json" +
+              "?auth=" +
+              token +
+              '&orderBy="userId"&equalTo="' +
+              userId +
+              '"'
+          )
+          .then((response) => {
+            if (Object.values(response.data).length !== undefined) {
+              setCart(() => Object.values(response.data).length);
+              sessionStorage.setItem(
+                "cart",
+                Object.values(response.data).length
+              );
+            }
+          });
+    };
+    getOrders();
+  }, []);
 
   return (
     <Container className={classes.Container}>

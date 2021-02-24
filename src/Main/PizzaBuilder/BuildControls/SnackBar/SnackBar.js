@@ -44,9 +44,9 @@ export default function SimpleSnackbar(props) {
   const handleClick = () => {
     props.setOpen(true);
     if (logIn) {
-      const cartStorage = parseInt(localStorage.getItem("cart"));
-      localStorage.setItem("cart", cartStorage + 1);
-      setCart(cartStorage + 1);
+      const cartStorage = parseInt(sessionStorage.getItem("cart"));
+      sessionStorage.setItem("cart", cartStorage + 1);
+      setCart(() => cartStorage + 1);
 
       const day = new Date().getDate();
       const mounth = new Date().getMonth() + 1;

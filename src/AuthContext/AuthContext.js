@@ -21,8 +21,8 @@ function AuthProvider({ children }) {
       : ""
   );
   const [cart, setCart] = useState(
-    localStorage.getItem("cart") !== null
-      ? parseInt(localStorage.getItem("cart"))
+    sessionStorage.getItem("cart") !== null
+      ? parseInt(sessionStorage.getItem("cart"))
       : 0
   );
 

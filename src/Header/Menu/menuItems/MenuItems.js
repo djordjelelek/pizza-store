@@ -50,10 +50,9 @@ const MenuItems = () => {
       border: `2px solid ${theme.palette.background.paper}`,
       padding: "0 4px",
       color: "white",
-      backgroundColor: "red",
+      backgroundColor: "rgb(255, 15, 15)",
     },
   }))(Badge);
-
   return (
     <>
       {logIn !== true ? (
@@ -75,6 +74,7 @@ const MenuItems = () => {
                 setUserId("");
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("userId");
+                sessionStorage.removeItem("cart");
                 window.location.reload();
               }, 500);
             }}
@@ -97,7 +97,7 @@ const MenuItems = () => {
       ) : null}
       <li className={classes.Element}>
         <NavLink to="/cart" activeStyle={{ color: "white" }}>
-          <StyledBadge badgeContent={logIn ? cart : null}>
+          <StyledBadge badgeContent={logIn ? (cart !== 0 ? cart : "0") : null}>
             <ShoppingCartIcon className={classes2.Cart}>Cart</ShoppingCartIcon>
           </StyledBadge>
         </NavLink>

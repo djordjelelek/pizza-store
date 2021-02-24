@@ -46,8 +46,8 @@ function Receipt(props) {
 
   const createOrder = () => {
     props.setLoading(true);
-    localStorage.setItem("cart", 0);
-    setCart(0);
+    sessionStorage.setItem("cart", 0);
+    setCart(() => 0);
     setTimeout(() => {
       history.push("/home");
     }, 300);

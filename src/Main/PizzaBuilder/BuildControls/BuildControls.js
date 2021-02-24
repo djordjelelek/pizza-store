@@ -22,23 +22,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "0px",
     marginBottom: "0px",
     padding: " 33px 25px 30px 30px",
-    // paddingRight: "25px",
-    // paddingTop: "33px",
-    // paddingTop: "5px",
-    // paddingBootom: "5px",
-    // height: "100%",
-    // width: "100%",
-    // minWidth: "300px",
     maxWidth: "350px",
     marginLeft: "-200px",
-    // minHeight: "100%",
-    // maxHeight: "550px",
-    // paddingTop: "20px",
-    // paddingBottom: "0px",
-    // marginLeft: "-150px",
-    // maxWidth: "400px",
-    // marginLeft: "0px",
-    // marginRight: "50px",
+
     "@media (max-width: 1100px)": {
       marginLeft: "0px",
     },
@@ -52,15 +38,10 @@ const useStyles = makeStyles((theme) => ({
   PriceButton: {
     marginTop: "47px",
   },
-  Price: {
-    // marginTop: "-10px",
-  },
   listItem: {
     marginBottom: "-5px",
-    // marginBottom: "-20px",
     padding: "0px",
     paddingLeft: "10px",
-    // backgroundColor: "blue",
   },
 }));
 

@@ -33,9 +33,9 @@ const Cart = () => {
   };
 
   const deleteOrder = (value, index) => {
-    const cartStorage = parseInt(localStorage.getItem("cart"));
-    localStorage.setItem("cart", cartStorage - 1);
-    setCart(cartStorage - 1);
+    const cartStorage = parseInt(sessionStorage.getItem("cart"));
+    sessionStorage.setItem("cart", cartStorage - 1);
+    setCart(() => cartStorage - 1);
 
     const ordersListCopy = [...ordersList];
     ordersListCopy.splice(index, 1);
