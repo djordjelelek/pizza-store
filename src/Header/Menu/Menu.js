@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import classes from "./Menu.module.css";
-import menu from "./menu-mobile.svg.png";
 import MenuItems from "./menuItems/MenuItems";
+import SideDrawer from "./sideDrawer/SideDrawer";
 
 const Menu = () => {
   const [showMobileMenu, setShowingMobileMenu] = useState(false);
   const mobile_menu = showMobileMenu ? (
-    <ul className={`${classes.List} ${classes.MobileMenu}`}>
-      <MenuItems />
-    </ul>
+    <SideDrawer setShowingMobileMenu={setShowingMobileMenu} />
   ) : null;
 
   return (
     <>
-      <img
-        src={menu}
-        alt="mobile-menu"
-        className={classes.MenuIcon}
-        onClick={() => setShowingMobileMenu((previousState) => !previousState)}
-      />
       {mobile_menu}
       <ul className={`${classes.Menu} ${classes.MenuItem}`}>
         <MenuItems />
