@@ -25,7 +25,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "-200px",
 
     "@media (max-width: 1100px)": {
-      marginLeft: "0px",
+      marginLeft: "50px",
+      maxWidth: "450px",
+    },
+    "@media (max-width: 960px)": {
+      marginLeft: "50px",
+      maxWidth: "570px",
+      marginTop: "70px",
     },
     "@media (max-width: 500px)": {
       marginLeft: "0px",

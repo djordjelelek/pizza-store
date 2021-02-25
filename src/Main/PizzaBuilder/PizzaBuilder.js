@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       marginLeft: "0px",
     },
-
     "@media (max-width: 1100px)": {
       marginLeft: "0px",
     },
