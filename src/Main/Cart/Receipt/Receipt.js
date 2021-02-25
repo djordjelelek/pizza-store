@@ -111,7 +111,7 @@ function Receipt(props) {
                 })}
               </ListItemText>
               <ListItemText className={classes.Prices}>
-                {el.price}.00 RSD
+                {Math.round((el.price * 0.8 * 100) / 100).toFixed(2)} RSD
               </ListItemText>
             </ListItem>
           ))}
