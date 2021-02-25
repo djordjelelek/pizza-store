@@ -113,9 +113,9 @@ const Orders = () => {
   ) : (
     <div>
       <h1 className={classes.NoOrders}>
-        There is no order yet <br /> With every online order you gain 20% off
+        There are no orders yet <br /> With every online order you gain 20% off
         <br />
-        Make order{" "}
+        Make an order{" "}
         <a href="/home" className={classes.Link}>
           now
         </a>

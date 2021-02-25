@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "0px",
     boxShadow: "4px 4px 15px  grey",
     borderRadius: "6px",
+    "@media (max-width: 500px)": {
+      width: "300px",
+    },
   },
   control: {
     padding: theme.spacing(2),

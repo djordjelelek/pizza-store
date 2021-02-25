@@ -75,7 +75,7 @@ const BuildControls = (props) => {
               <Checkbox
                 edge="start"
                 style={{
-                  color: "#4caf50",
+                  color: "#8fcc66",
                   "&:hover": {
                     color: "rgb(54, 125, 57)",
                   },

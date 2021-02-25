@@ -173,7 +173,7 @@ const Cart = () => {
     ) : (
       <div>
         <h1 className={classes.NoOrders}>
-          The cart is empty <br /> With every online order you gain 20% off
+          Your cart is empty <br /> With every online order you gain 20% off
           <br />
           Make an order{" "}
           <a href="/home" className={classes.Link}>
