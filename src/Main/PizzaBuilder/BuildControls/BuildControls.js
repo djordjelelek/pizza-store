@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
     "@media (max-width: 1100px)": {
       marginLeft: "0px",
+      marginTop: "27px",
     },
   },
   List: {
