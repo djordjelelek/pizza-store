@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
 
     "@media (max-width: 1100px)": {
       marginLeft: "0px",
+    },
+    "@media (max-width: 500px)": {
+      marginLeft: "0px",
       marginTop: "27px",
     },
   },
