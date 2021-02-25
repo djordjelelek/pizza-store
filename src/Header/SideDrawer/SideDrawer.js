@@ -1,6 +1,6 @@
 import React from "react";
 import menu from "./menu-mobile.svg.png";
-import MenuItems from "../menuItems/MenuItems";
+import Menu from "../Menu/Menu";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
@@ -8,9 +8,7 @@ import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles({
   list: {
     width: 250,
-  },
-  fullList: {
-    width: "auto",
+    backgroundColor: "orange",
   },
   MenuIcon: {
     width: "3.1em",
@@ -19,6 +17,9 @@ const useStyles = makeStyles({
   },
   "@media (min-width: 501px)": {
     MenuIcon: {
+      display: "none",
+    },
+    Container: {
       display: "none",
     },
   },
@@ -39,13 +40,13 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <MenuItems />
+      <Menu />
       <Divider />
     </div>
   );
 
   return (
-    <div>
+    <div className={classes.Container}>
       <React.Fragment key={"right"}>
         <img
           src={menu}
