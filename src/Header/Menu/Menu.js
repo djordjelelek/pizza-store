@@ -94,13 +94,11 @@ const Menu = () => {
           Pizza Builder
         </NavLink>
       </li>
-      {logIn ? (
-        <li className={classes.Element}>
-          <NavLink to="/orders-history" activeStyle={{ color: "white" }}>
-            Orders History
-          </NavLink>
-        </li>
-      ) : null}
+      <li className={classes.Element}>
+        <NavLink to="/orders-history" activeStyle={{ color: "white" }}>
+          Orders History
+        </NavLink>
+      </li>
       <li className={classes.Element}>
         <NavLink to="/cart" activeStyle={{ color: "white" }}>
           <StyledBadge badgeContent={logIn ? (cart !== 0 ? cart : "0") : null}>

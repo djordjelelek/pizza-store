@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "30px",
     },
   },
-
   NoOrders: {
     color: "rgb(255, 255, 255)",
     padding: "70px",

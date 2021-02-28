@@ -44,7 +44,7 @@ const Main = () => {
           <Route path="/home" component={PizzaBuilder} />
           <Redirect from="/" exact to="/home" />
           <Route path="/cart" component={Cart} />
-          <Redirect from="/orders-history" to="/login" />
+          <Route path="/orders-history" component={OrdersHistory} />
         </Switch>
       )}
     </Container>
